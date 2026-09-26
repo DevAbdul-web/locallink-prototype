@@ -1,0 +1,444 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Order Confirmed | LocalLink</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="./css/order-confirmation.css" />
+
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+
+  <body>
+    <!-- =====================================================
+         GLOBAL HEADER
+    ====================================================== -->
+
+    <header class="app-header">
+      <a href="./index.html" class="brand">
+        <span class="brand-icon">
+          <i data-lucide="map-pin"></i>
+        </span>
+
+        <span class="brand-name">LocalLink</span>
+      </a>
+
+      <nav class="desktop-navigation">
+        <a href="./index.html">
+          <i data-lucide="house"></i>
+          <span>Home</span>
+        </a>
+
+        <a href="./category.html">
+          <i data-lucide="compass"></i>
+          <span>Explore</span>
+        </a>
+
+        <button type="button" data-action="open-search">
+          <i data-lucide="search"></i>
+          <span>Search</span>
+        </button>
+      </nav>
+
+      <div class="header-right">
+        <div class="header-location">
+          <i data-lucide="map-pin"></i>
+          <span>Ilorin, Kwara</span>
+        </div>
+
+        <!-- CART -->
+        <a
+          href="./cart.html"
+          class="active header-cart-button"
+          aria-label="Cart"
+        >
+          <i data-lucide="shopping-cart"></i>
+
+          <span class="cart-count-badge" data-cart-count hidden> 0 </span>
+        </a>
+
+        <nav class="header-actions">
+          <a href="./orders.html" class="header-action">
+            <i data-lucide="package"></i>
+            <span class="header-action-label">Orders</span>
+          </a>
+
+          <a href="./saved.html" class="header-action">
+            <i data-lucide="heart"></i>
+            <span class="header-action-label">Saved</span>
+          </a>
+
+          <a href="./profile.html" class="profile-button" aria-label="Profile">
+            <i data-lucide="user"></i>
+          </a>
+        </nav>
+
+        <button
+          type="button"
+          class="mobile-search-trigger"
+          data-action="open-search"
+          aria-label="Search"
+        >
+          <i data-lucide="search"></i>
+        </button>
+      </div>
+    </header>
+
+    <!-- =====================================================
+         ORDER CONFIRMATION
+    ====================================================== -->
+
+    <main class="order-confirmation-main">
+      <section
+        class="order-confirmation-content"
+        id="order-confirmation-content"
+        hidden
+      >
+        <!-- SUCCESS -->
+
+        <div class="order-confirmation-hero">
+          <div class="order-confirmation-check">
+            <i data-lucide="check"></i>
+          </div>
+
+          <span class="order-confirmation-eyebrow"> Payment successful </span>
+
+          <h1>Your order has been placed</h1>
+
+          <p>
+            Your payment is protected by LocalLink while the businesses prepare
+            and fulfil your order.
+          </p>
+
+          <div class="order-confirmation-paid">
+            <span>Amount paid</span>
+
+            <strong id="confirmation-total"> ₦0 </strong>
+          </div>
+        </div>
+
+        <!-- ORDER COUNT -->
+
+        <div class="order-confirmation-summary">
+          <div>
+            <span>Transaction</span>
+
+            <strong id="confirmation-transaction"> — </strong>
+          </div>
+
+          <div>
+            <span>Orders created</span>
+
+            <strong id="confirmation-order-count"> 0 </strong>
+          </div>
+
+          <div>
+            <span>Payment</span>
+
+            <strong class="confirmation-success-text"> Paid </strong>
+          </div>
+        </div>
+
+        <!-- SELLER ORDERS -->
+
+        <section class="confirmation-orders-section">
+          <div class="confirmation-section-heading">
+            <div>
+              <span>Your purchases</span>
+
+              <h2>Order details</h2>
+            </div>
+          </div>
+
+          <div
+            class="confirmation-orders-list"
+            id="confirmation-orders-list"
+          ></div>
+        </section>
+
+        <!-- PAYMENT PROTECTION -->
+
+        <section class="confirmation-protection-card">
+          <div class="confirmation-protection-icon">
+            <i data-lucide="shield-check"></i>
+          </div>
+
+          <div>
+            <strong> Your payment is protected </strong>
+
+            <p>
+              LocalLink is holding the business payment while your order is
+              being fulfilled. The business settlement is released after
+              successful completion.
+            </p>
+          </div>
+        </section>
+
+        <!-- NEXT STEP -->
+
+        <section class="confirmation-next-card">
+          <div>
+            <span>What happens next?</span>
+
+            <h2>We'll keep you updated</h2>
+
+            <p>
+              Follow each order as the business confirms it, prepares your items
+              and completes delivery or pickup.
+            </p>
+          </div>
+
+          <div class="confirmation-next-steps">
+            <div class="confirmation-next-step active">
+              <span>
+                <i data-lucide="check"></i>
+              </span>
+
+              <div>
+                <strong>Payment confirmed</strong>
+                <small> Your payment has been received. </small>
+              </div>
+            </div>
+
+            <div class="confirmation-next-step">
+              <span>
+                <i data-lucide="store"></i>
+              </span>
+
+              <div>
+                <strong>Business prepares order</strong>
+                <small> The business receives and prepares your order. </small>
+              </div>
+            </div>
+
+            <div class="confirmation-next-step">
+              <span>
+                <i data-lucide="package-check"></i>
+              </span>
+
+              <div>
+                <strong>Receive your items</strong>
+                <small> Delivery or pickup is completed. </small>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ACTIONS -->
+
+        <div class="order-confirmation-actions">
+          <a href="./orders.html" class="confirmation-track-button">
+            <span>Track your orders</span>
+            <i data-lucide="arrow-right"></i>
+          </a>
+
+          <a href="./index.html" class="confirmation-shopping-button">
+            Continue shopping
+          </a>
+        </div>
+      </section>
+
+      <!-- ===================================================
+           MISSING CONFIRMATION
+      ==================================================== -->
+
+      <section class="confirmation-missing" id="confirmation-missing" hidden>
+        <div class="confirmation-missing-icon">
+          <i data-lucide="package-search"></i>
+        </div>
+
+        <h1>No recent order found</h1>
+
+        <p>We couldn't find a recent checkout to display.</p>
+
+        <a href="./orders.html"> View your orders </a>
+      </section>
+    </main>
+    <!-- =====================================================
+     SEARCH OVERLAY
+====================================================== -->
+
+    <section
+      class="search-overlay"
+      id="search-overlay"
+      aria-hidden="true"
+      aria-label="Search LocalLink"
+    >
+      <div class="search-overlay-content">
+        <!-- =================================================
+         SEARCH HEADER
+    ================================================== -->
+
+        <div class="search-overlay-header">
+          <div class="search-overlay-heading">
+            <div>
+              <span class="search-eyebrow"> LocalLink Search </span>
+
+              <h2>What are you looking for?</h2>
+
+              <p>
+                Search products from local stores or find services from local
+                professionals.
+              </p>
+            </div>
+
+            <button
+              type="button"
+              id="close-search"
+              class="close-search-button"
+              aria-label="Close search"
+            >
+              <i data-lucide="x"></i>
+            </button>
+          </div>
+
+          <!-- SEARCH INPUT -->
+
+          <form id="overlay-search-form" class="overlay-search-form">
+            <div class="overlay-search-field">
+              <span class="overlay-search-icon">
+                <i data-lucide="search"></i>
+              </span>
+
+              <input
+                type="search"
+                id="overlay-search-input"
+                placeholder="Try rice, phone charger, plumber..."
+                autocomplete="off"
+                aria-label="Search LocalLink"
+              />
+
+              <button type="submit" class="overlay-search-button">
+                <span>Search</span>
+
+                <i data-lucide="arrow-right"></i>
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <!-- =================================================
+         SEARCH TYPE
+    ================================================== -->
+
+        <div class="search-type-area">
+          <div class="search-type-heading">
+            <span>Search in</span>
+
+            <p>Choose the type of result you want to find.</p>
+          </div>
+
+          <div class="search-type-selector" id="search-type-toggle">
+            <!-- PRODUCTS -->
+
+            <button
+              type="button"
+              id="product-search-button"
+              value="product"
+              class="active"
+              aria-pressed="true"
+            >
+              <span class="search-type-icon">
+                <i data-lucide="shopping-bag"></i>
+              </span>
+
+              <span class="search-type-copy">
+                <strong>Products</strong>
+
+                <small> Items from local stores </small>
+              </span>
+
+              <span class="search-type-selected">
+                <i data-lucide="check"></i>
+              </span>
+            </button>
+
+            <!-- SERVICES -->
+
+            <button
+              type="button"
+              id="service-search-button"
+              value="service"
+              aria-pressed="false"
+            >
+              <span class="search-type-icon">
+                <i data-lucide="briefcase-business"></i>
+              </span>
+
+              <span class="search-type-copy">
+                <strong>Services</strong>
+
+                <small> Local professionals and services </small>
+              </span>
+
+              <span class="search-type-selected">
+                <i data-lucide="check"></i>
+              </span>
+            </button>
+          </div>
+        </div>
+
+        <!-- =================================================
+         RECENT SEARCHES
+
+         search.js inserts the recent-search section here
+         dynamically.
+    ================================================== -->
+
+        <!-- =================================================
+         RESULTS
+    ================================================== -->
+
+        <div
+          id="search-results"
+          class="search-results"
+          aria-live="polite"
+        ></div>
+      </div>
+    </section>
+    <!-- =====================================================
+         MOBILE NAVIGATION
+    ====================================================== -->
+
+    <nav class="mobile-bottom-navigation" aria-label="Mobile navigation">
+      <a href="./index.html">
+        <i data-lucide="house"></i>
+        <span>Home</span>
+      </a>
+
+      <a href="./category.html">
+        <i data-lucide="compass"></i>
+        <span>Explore</span>
+      </a>
+
+      <a href="./orders.html">
+        <i data-lucide="package"></i>
+        <span>Orders</span>
+      </a>
+
+      <a href="./saved.html">
+        <i data-lucide="heart"></i>
+        <span>Saved</span>
+      </a>
+
+      <a href="./profile.html">
+        <i data-lucide="user"></i>
+        <span>Profile</span>
+      </a>
+    </nav>
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script type="module" src="./js/order-confirmation.js"></script>
+  </body>
+</html>

@@ -1,0 +1,814 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Request Service | LocalLink</title>
+
+    <link rel="stylesheet" href="./css/style.css" />
+
+    <!-- PAGE -->
+    <link rel="stylesheet" href="./css/service-request.css" />
+  </head>
+
+  <body>
+    <!-- =====================================================
+         GLOBAL HEADER
+    ====================================================== -->
+
+    <header class="app-header">
+      <a href="./index.html" class="brand">
+        <span class="brand-icon">
+          <i data-lucide="map-pin"></i>
+        </span>
+
+        <span class="brand-name">LocalLink</span>
+      </a>
+
+      <nav class="desktop-navigation">
+        <a href="./index.html">
+          <i data-lucide="house"></i>
+          <span>Home</span>
+        </a>
+
+        <a href="./category.html">
+          <i data-lucide="compass"></i>
+          <span>Explore</span>
+        </a>
+
+        <button type="button" data-action="open-search">
+          <i data-lucide="search"></i>
+          <span>Search</span>
+        </button>
+      </nav>
+
+      <div class="header-right">
+        <div class="header-location">
+          <i data-lucide="map-pin"></i>
+          <span>Ilorin, Kwara</span>
+        </div>
+
+        <a href="./cart.html" class="header-cart-button" aria-label="Cart">
+          <i data-lucide="shopping-cart"></i>
+
+          <span class="cart-count-badge" data-cart-count hidden> 0 </span>
+        </a>
+
+        <nav class="header-actions">
+          <a href="./orders.html" class="header-action">
+            <i data-lucide="package"></i>
+            <span class="header-action-label">Orders</span>
+          </a>
+
+          <a href="./saved.html" class="header-action">
+            <i data-lucide="heart"></i>
+            <span class="header-action-label">Saved</span>
+          </a>
+
+          <a href="./profile.html" class="profile-button" aria-label="Profile">
+            <i data-lucide="user"></i>
+          </a>
+        </nav>
+
+        <button
+          type="button"
+          class="mobile-search-trigger"
+          data-action="open-search"
+          aria-label="Search"
+        >
+          <i data-lucide="search"></i>
+        </button>
+      </div>
+    </header>
+
+    <!-- =====================================================
+         SERVICE REQUEST PAGE
+    ====================================================== -->
+
+    <main class="service-request-main">
+      <!-- PAGE HEADER -->
+
+      <section class="service-request-page-header">
+        <a
+          id="back-to-service"
+          href="./explore.html"
+          class="service-request-back"
+        >
+          <i data-lucide="arrow-left"></i>
+          <span>Back to service</span>
+        </a>
+
+        <div class="service-request-page-title">
+          <span class="service-request-page-eyebrow">
+            Local service request
+          </span>
+
+          <h1>Request a Service</h1>
+
+          <p>Tell the provider what you need and when you need it.</p>
+        </div>
+      </section>
+
+      <!-- NOT FOUND -->
+
+      <section
+        id="service-request-not-found"
+        class="service-request-not-found"
+        hidden
+      >
+        <i data-lucide="circle-alert"></i>
+
+        <h1>Service not found</h1>
+
+        <p>This service may no longer be available.</p>
+
+        <a href="./explore.html"> Explore services </a>
+      </section>
+
+      <!-- REQUEST LAYOUT -->
+
+      <section id="service-request-layout" class="service-request-layout">
+        <!-- ===============================================
+             LEFT SIDE
+        ================================================ -->
+
+        <div class="service-request-workspace">
+          <!-- SERVICE SUMMARY -->
+
+          <article class="request-service-preview">
+            <img
+              id="request-preview-image"
+              src=""
+              alt=""
+              class="request-service-preview-image"
+            />
+
+            <div class="request-service-preview-content">
+              <span class="request-service-preview-label">
+                You're requesting
+              </span>
+
+              <h2 id="request-preview-name"></h2>
+
+              <p id="request-preview-provider"></p>
+
+              <div class="request-service-preview-meta">
+                <span>
+                  <i data-lucide="wallet"></i>
+                  <strong id="request-preview-price"></strong>
+                </span>
+
+                <span>
+                  <i data-lucide="map-pin"></i>
+                  <span id="request-preview-location"></span>
+                </span>
+              </div>
+            </div>
+          </article>
+
+          <!-- ===============================================
+               PROGRESS
+          ================================================ -->
+
+          <div class="request-progress">
+            <div class="request-progress-track">
+              <div
+                id="request-progress-fill"
+                class="request-progress-fill"
+              ></div>
+            </div>
+
+            <div class="request-progress-steps">
+              <button
+                type="button"
+                class="request-progress-step active"
+                data-progress-step="1"
+                disabled
+              >
+                <span>1</span>
+                <small>Details</small>
+              </button>
+
+              <button
+                type="button"
+                class="request-progress-step"
+                data-progress-step="2"
+                disabled
+              >
+                <span>2</span>
+                <small>Location</small>
+              </button>
+
+              <button
+                type="button"
+                class="request-progress-step"
+                data-progress-step="3"
+                disabled
+              >
+                <span>3</span>
+                <small>Schedule</small>
+              </button>
+
+              <button
+                type="button"
+                class="request-progress-step"
+                data-progress-step="4"
+                disabled
+              >
+                <span>4</span>
+                <small>Review</small>
+              </button>
+            </div>
+          </div>
+
+          <!-- ===============================================
+               FORM
+          ================================================ -->
+
+          <form
+            id="service-request-form"
+            class="service-request-form"
+            novalidate
+          >
+            <div class="request-step-stage">
+              <!-- =========================================
+                   STEP 1 — DETAILS
+              ========================================== -->
+
+              <section class="request-step active" data-request-step="1">
+                <div class="request-step-heading">
+                  <span class="request-step-number"> Step 1 of 4 </span>
+
+                  <h2>What do you need?</h2>
+
+                  <p>
+                    Give the provider enough information to understand the job
+                    before accepting your request.
+                  </p>
+                </div>
+
+                <div class="request-field">
+                  <label for="request-description">
+                    Describe what you need
+                  </label>
+
+                  <textarea
+                    id="request-description"
+                    rows="7"
+                    maxlength="1000"
+                    placeholder="For example: My air conditioner powers on but it is no longer cooling properly..."
+                  ></textarea>
+
+                  <div class="request-field-footer">
+                    <span
+                      class="request-field-error"
+                      data-error-for="description"
+                    ></span>
+
+                    <span id="description-count"> 0 / 1000 </span>
+                  </div>
+                </div>
+
+                <div class="request-step-actions">
+                  <button
+                    type="button"
+                    class="request-primary-button"
+                    data-action="next-step"
+                  >
+                    <span>Continue</span>
+                    <i data-lucide="arrow-right"></i>
+                  </button>
+                </div>
+              </section>
+
+              <!-- =========================================
+                   STEP 2 — LOCATION
+              ========================================== -->
+
+              <!-- =========================================
+     STEP 2 — LOCATION
+========================================== -->
+
+              <section class="request-step" data-request-step="2" hidden>
+                <div class="request-step-heading">
+                  <span class="request-step-number"> Step 2 of 4 </span>
+
+                  <h2>Where do you need the service?</h2>
+
+                  <p>Choose how you want to receive this service.</p>
+                </div>
+
+                <!-- =====================================
+       SERVICE METHOD
+  ====================================== -->
+
+                <div
+                  id="fulfillment-options"
+                  class="request-fulfillment-options"
+                ></div>
+
+                <span
+                  class="request-field-error request-option-error"
+                  data-error-for="fulfillment"
+                ></span>
+
+                <!-- =====================================
+       CUSTOMER SAVED ADDRESS
+
+       JavaScript renders the customer's
+       default/saved address here when
+       "At my location" is selected.
+  ====================================== -->
+
+                <div
+                  id="customer-location-fields"
+                  class="request-location-fields"
+                  hidden
+                ></div>
+
+                <!-- =====================================
+       LOCATION PRIVACY
+  ====================================== -->
+
+                <div
+                  id="request-location-privacy"
+                  class="location-privacy-note"
+                  hidden
+                >
+                  <i data-lucide="shield-check"></i>
+
+                  <div>
+                    <strong> Your location stays private </strong>
+
+                    <p>
+                      Your address is used only to arrange this service and is
+                      shared only when needed to complete your request.
+                    </p>
+                  </div>
+                </div>
+
+                <!-- =====================================
+       NAVIGATION
+  ====================================== -->
+
+                <div class="request-step-actions">
+                  <button
+                    type="button"
+                    class="request-secondary-button"
+                    data-action="previous-step"
+                  >
+                    <i data-lucide="arrow-left"></i>
+
+                    <span> Back </span>
+                  </button>
+
+                  <button
+                    type="button"
+                    class="request-primary-button"
+                    data-action="next-step"
+                  >
+                    <span> Continue </span>
+
+                    <i data-lucide="arrow-right"></i>
+                  </button>
+                </div>
+              </section>
+
+              <!-- =========================================
+                   STEP 3 — SCHEDULE + CONTACT
+              ========================================== -->
+
+              <section class="request-step" data-request-step="3" hidden>
+                <div class="request-step-heading">
+                  <span class="request-step-number"> Step 3 of 4 </span>
+
+                  <h2>When should it happen?</h2>
+
+                  <p>
+                    Choose your preferred schedule and tell the provider how to
+                    reach you.
+                  </p>
+                </div>
+
+                <div class="request-form-grid">
+                  <div class="request-field">
+                    <label for="request-date"> Preferred date </label>
+
+                    <input type="date" id="request-date" />
+
+                    <span
+                      class="request-field-error"
+                      data-error-for="date"
+                    ></span>
+                  </div>
+
+                  <div class="request-field">
+                    <label for="request-time"> Preferred time </label>
+
+                    <input type="time" id="request-time" />
+
+                    <span
+                      class="request-field-error"
+                      data-error-for="time"
+                    ></span>
+                  </div>
+                </div>
+
+                <div class="request-form-grid">
+                  <div class="request-field">
+                    <label for="request-customer-name"> Full name </label>
+
+                    <input
+                      type="text"
+                      id="request-customer-name"
+                      autocomplete="name"
+                      placeholder="Your full name"
+                    />
+
+                    <span
+                      class="request-field-error"
+                      data-error-for="customerName"
+                    ></span>
+                  </div>
+
+                  <div class="request-field">
+                    <label for="request-phone"> Phone number </label>
+
+                    <input
+                      type="tel"
+                      id="request-phone"
+                      autocomplete="tel"
+                      placeholder="080..."
+                    />
+
+                    <span
+                      class="request-field-error"
+                      data-error-for="phone"
+                    ></span>
+                  </div>
+                </div>
+
+                <div class="request-step-actions">
+                  <button
+                    type="button"
+                    class="request-secondary-button"
+                    data-action="previous-step"
+                  >
+                    <i data-lucide="arrow-left"></i>
+                    <span>Back</span>
+                  </button>
+
+                  <button
+                    type="button"
+                    class="request-primary-button"
+                    data-action="next-step"
+                  >
+                    <span>Review Request</span>
+                    <i data-lucide="arrow-right"></i>
+                  </button>
+                </div>
+              </section>
+
+              <!-- =========================================
+                   STEP 4 — REVIEW
+              ========================================== -->
+
+              <section class="request-step" data-request-step="4" hidden>
+                <div class="request-step-heading">
+                  <span class="request-step-number"> Step 4 of 4 </span>
+
+                  <h2>Review your request</h2>
+
+                  <p>
+                    Make sure everything looks right before sending it to the
+                    provider.
+                  </p>
+                </div>
+
+                <div class="request-review-card">
+                  <div class="request-review-row">
+                    <span>Service</span>
+                    <strong id="review-service"></strong>
+                  </div>
+
+                  <div class="request-review-row">
+                    <span>Provider</span>
+                    <strong id="review-provider"></strong>
+                  </div>
+
+                  <div class="request-review-row">
+                    <span>Pricing</span>
+                    <strong id="review-price"></strong>
+                  </div>
+
+                  <div class="request-review-row">
+                    <span>Service method</span>
+                    <strong id="review-fulfillment"></strong>
+                  </div>
+
+                  <div
+                    id="review-address-row"
+                    class="request-review-row"
+                    hidden
+                  >
+                    <span>Address</span>
+                    <strong id="review-address"></strong>
+                  </div>
+
+                  <div class="request-review-row">
+                    <span>Preferred date</span>
+                    <strong id="review-date"></strong>
+                  </div>
+
+                  <div class="request-review-row">
+                    <span>Preferred time</span>
+                    <strong id="review-time"></strong>
+                  </div>
+
+                  <div class="request-review-row">
+                    <span>Contact</span>
+                    <strong id="review-contact"></strong>
+                  </div>
+                </div>
+
+                <div class="request-review-description">
+                  <span>What you need</span>
+                  <p id="review-description"></p>
+                </div>
+
+                <div class="request-submit-note">
+                  <i data-lucide="info"></i>
+
+                  <p>
+                    Sending this request does not mean the provider has accepted
+                    it yet. You can track its status after submission.
+                  </p>
+                </div>
+
+                <div class="request-step-actions">
+                  <button
+                    type="button"
+                    class="request-secondary-button"
+                    data-action="previous-step"
+                  >
+                    <i data-lucide="arrow-left"></i>
+                    <span>Back</span>
+                  </button>
+
+                  <button
+                    type="submit"
+                    id="submit-service-request"
+                    class="request-primary-button request-submit-button"
+                  >
+                    <span>Send Request</span>
+                    <i data-lucide="send"></i>
+                  </button>
+                </div>
+              </section>
+            </div>
+          </form>
+        </div>
+
+        <!-- ===============================================
+             RIGHT SIDE
+        ================================================ -->
+
+        <aside class="request-help-card">
+          <div class="request-help-icon">
+            <i data-lucide="shield-check"></i>
+          </div>
+
+          <h2>How service requests work</h2>
+
+          <div class="request-help-step">
+            <span>1</span>
+
+            <div>
+              <strong>Send your request</strong>
+              <p>
+                Tell the provider what you need and your preferred schedule.
+              </p>
+            </div>
+          </div>
+
+          <div class="request-help-step">
+            <span>2</span>
+
+            <div>
+              <strong>Provider responds</strong>
+              <p>Your request remains pending until the provider accepts it.</p>
+            </div>
+          </div>
+
+          <div class="request-help-step">
+            <span>3</span>
+
+            <div>
+              <strong>Track the service</strong>
+              <p>
+                Follow acceptance, scheduling and service progress from your
+                request page.
+              </p>
+            </div>
+          </div>
+
+          <div class="request-help-step">
+            <span>4</span>
+
+            <div>
+              <strong>Confirm completion securely</strong>
+              <p>
+                When the service is finished, LocalLink sends you a completion
+                code. Share it only after the work is done.
+              </p>
+            </div>
+          </div>
+        </aside>
+      </section>
+    </main>
+
+    <!-- =====================================================
+         MOBILE BOTTOM NAVIGATION
+    ====================================================== -->
+
+    <nav class="mobile-bottom-navigation">
+      <a href="./index.html">
+        <i data-lucide="house"></i>
+        <span>Home</span>
+      </a>
+
+      <a href="./category.html">
+        <i data-lucide="compass"></i>
+        <span>Explore</span>
+      </a>
+
+      <a href="./orders.html">
+        <i data-lucide="package"></i>
+        <span>Orders</span>
+      </a>
+
+      <a href="./saved.html">
+        <i data-lucide="heart"></i>
+        <span>Saved</span>
+      </a>
+
+      <a href="./profile.html">
+        <i data-lucide="user"></i>
+        <span>Profile</span>
+      </a>
+    </nav>
+
+    <!-- =====================================================
+     SEARCH OVERLAY
+====================================================== -->
+
+    <section
+      class="search-overlay"
+      id="search-overlay"
+      aria-hidden="true"
+      aria-label="Search LocalLink"
+    >
+      <div class="search-overlay-content">
+        <!-- =================================================
+         SEARCH HEADER
+    ================================================== -->
+
+        <div class="search-overlay-header">
+          <div class="search-overlay-heading">
+            <div>
+              <span class="search-eyebrow"> LocalLink Search </span>
+
+              <h2>What are you looking for?</h2>
+
+              <p>
+                Search products from local stores or find services from local
+                professionals.
+              </p>
+            </div>
+
+            <button
+              type="button"
+              id="close-search"
+              class="close-search-button"
+              aria-label="Close search"
+            >
+              <i data-lucide="x"></i>
+            </button>
+          </div>
+
+          <!-- SEARCH INPUT -->
+
+          <form id="overlay-search-form" class="overlay-search-form">
+            <div class="overlay-search-field">
+              <span class="overlay-search-icon">
+                <i data-lucide="search"></i>
+              </span>
+
+              <input
+                type="search"
+                id="overlay-search-input"
+                placeholder="Try rice, phone charger, plumber..."
+                autocomplete="off"
+                aria-label="Search LocalLink"
+              />
+
+              <button type="submit" class="overlay-search-button">
+                <span>Search</span>
+
+                <i data-lucide="arrow-right"></i>
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <!-- =================================================
+         SEARCH TYPE
+    ================================================== -->
+
+        <div class="search-type-area">
+          <div class="search-type-heading">
+            <span>Search in</span>
+
+            <p>Choose the type of result you want to find.</p>
+          </div>
+
+          <div class="search-type-selector" id="search-type-toggle">
+            <!-- PRODUCTS -->
+
+            <button
+              type="button"
+              id="product-search-button"
+              value="product"
+              class="active"
+              aria-pressed="true"
+            >
+              <span class="search-type-icon">
+                <i data-lucide="shopping-bag"></i>
+              </span>
+
+              <span class="search-type-copy">
+                <strong>Products</strong>
+
+                <small> Items from local stores </small>
+              </span>
+
+              <span class="search-type-selected">
+                <i data-lucide="check"></i>
+              </span>
+            </button>
+
+            <!-- SERVICES -->
+
+            <button
+              type="button"
+              id="service-search-button"
+              value="service"
+              aria-pressed="false"
+            >
+              <span class="search-type-icon">
+                <i data-lucide="briefcase-business"></i>
+              </span>
+
+              <span class="search-type-copy">
+                <strong>Services</strong>
+
+                <small> Local professionals and services </small>
+              </span>
+
+              <span class="search-type-selected">
+                <i data-lucide="check"></i>
+              </span>
+            </button>
+          </div>
+        </div>
+
+        <!-- =================================================
+         RECENT SEARCHES
+
+         search.js inserts the recent-search section here
+         dynamically.
+    ================================================== -->
+
+        <!-- =================================================
+         RESULTS
+    ================================================== -->
+
+        <div
+          id="search-results"
+          class="search-results"
+          aria-live="polite"
+        ></div>
+      </div>
+    </section>
+
+    <!-- =====================================================
+         SCRIPTS
+    ====================================================== -->
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script type="module" src="./js/auth-guard.js"></script>
+    <script type="module" src="./js/service-request.js"></script>
+  </body>
+</html>

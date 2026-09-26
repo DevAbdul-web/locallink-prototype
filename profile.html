@@ -1,0 +1,815 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Profile | LocalLink</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="./css/style.css" />
+
+    <!-- PAGE -->
+    <link rel="stylesheet" href="./css/user-profile.css" />
+  </head>
+
+  <body>
+    <!-- =====================================================
+         GLOBAL HEADER
+    ====================================================== -->
+
+    <header class="app-header">
+      <a href="./index.html" class="brand">
+        <span class="brand-icon">
+          <i data-lucide="map-pin"></i>
+        </span>
+
+        <span class="brand-name">LocalLink</span>
+      </a>
+
+      <nav class="desktop-navigation">
+        <a href="./index.html">
+          <i data-lucide="house"></i>
+          <span>Home</span>
+        </a>
+
+        <a href="./explore.html">
+          <i data-lucide="compass"></i>
+          <span>Explore</span>
+        </a>
+
+        <button type="button" data-action="open-search">
+          <i data-lucide="search"></i>
+          <span>Search</span>
+        </button>
+      </nav>
+
+      <div class="header-right">
+        <div class="header-location">
+          <i data-lucide="map-pin"></i>
+          <span>Ilorin, Kwara</span>
+        </div>
+
+        <!-- CART -->
+        <a href="./cart.html" class="header-cart-button" aria-label="Cart">
+          <i data-lucide="shopping-cart"></i>
+
+          <span class="cart-count-badge" data-cart-count hidden> 0 </span>
+        </a>
+
+        <nav class="header-actions">
+          <a href="./orders.html" class="header-action">
+            <i data-lucide="package"></i>
+            <span class="header-action-label">Orders</span>
+          </a>
+
+          <a href="./saved.html" class="header-action">
+            <i data-lucide="heart"></i>
+            <span class="header-action-label">Saved</span>
+          </a>
+
+          <a href="./profile.html" class="profile-button" aria-label="Profile">
+            <i data-lucide="user"></i>
+          </a>
+        </nav>
+
+        <button
+          type="button"
+          class="mobile-search-trigger"
+          data-action="open-search"
+          aria-label="Search"
+        >
+          <i data-lucide="search"></i>
+        </button>
+      </div>
+    </header>
+
+    <!-- =====================================================
+         PROFILE
+    ====================================================== -->
+
+    <main class="profile-main">
+      <!-- PAGE HEADING -->
+
+      <section class="profile-page-heading">
+        <div>
+          <span class="profile-eyebrow">Your account</span>
+
+          <h1>Profile</h1>
+
+          <p>
+            Manage your personal information, delivery addresses and LocalLink
+            account.
+          </p>
+        </div>
+      </section>
+
+      <div class="profile-layout">
+        <!-- =================================================
+             PROFILE OVERVIEW
+        ================================================== -->
+
+        <aside class="profile-overview-card">
+          <div class="profile-avatar" id="profile-avatar" aria-hidden="true">
+            <span id="profile-initials">--</span>
+          </div>
+
+          <div class="profile-overview-content">
+            <!-- Filled from saved profile -->
+
+            <h2 id="profile-display-name">Loading...</h2>
+
+            <p id="profile-display-phone">Loading...</p>
+          </div>
+
+          <div class="profile-status">
+            <span class="profile-status-dot"></span>
+            <span>LocalLink customer</span>
+          </div>
+        </aside>
+
+        <!-- =================================================
+             PROFILE CONTENT
+        ================================================== -->
+
+        <div class="profile-content">
+          <!-- PERSONAL INFORMATION -->
+
+          <section class="profile-card">
+            <div class="profile-card-heading">
+              <div>
+                <span>Account details</span>
+                <h2>Personal information</h2>
+
+                <p>
+                  Information used for your LocalLink account and order
+                  communication.
+                </p>
+              </div>
+
+              <button
+                type="button"
+                class="profile-secondary-button"
+                data-action="edit-personal-info"
+              >
+                <i data-lucide="pencil"></i>
+                <span>Edit</span>
+              </button>
+            </div>
+
+            <div class="profile-information-list">
+              <div class="profile-information-item">
+                <span class="profile-information-icon">
+                  <i data-lucide="user"></i>
+                </span>
+
+                <div>
+                  <span>Full name</span>
+
+                  <strong id="profile-name"> Loading... </strong>
+                </div>
+              </div>
+
+              <div class="profile-information-item">
+                <span class="profile-information-icon">
+                  <i data-lucide="phone"></i>
+                </span>
+
+                <div>
+                  <span>Phone number</span>
+
+                  <strong id="profile-phone"> Loading... </strong>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- =================================================
+               DELIVERY ADDRESSES
+          ================================================== -->
+
+          <section class="profile-card">
+            <div class="profile-card-heading">
+              <div>
+                <span>Delivery</span>
+                <h2>Saved addresses</h2>
+
+                <p>
+                  Save addresses for faster checkout when you choose delivery.
+                </p>
+              </div>
+
+              <button
+                type="button"
+                class="profile-primary-small-button"
+                data-action="add-address"
+              >
+                <i data-lucide="plus"></i>
+                <span>Add address</span>
+              </button>
+            </div>
+
+            <!-- JS decides whether empty state or addresses
+                 are displayed -->
+
+            <div
+              class="profile-address-list"
+              id="profile-address-list"
+              hidden
+            ></div>
+
+            <!-- EMPTY ADDRESS STATE -->
+
+            <div
+              class="profile-address-empty"
+              id="profile-address-empty"
+              hidden
+            >
+              <div class="profile-address-empty-icon">
+                <i data-lucide="map-pin"></i>
+              </div>
+
+              <div>
+                <h3>No saved address yet</h3>
+
+                <p>
+                  Add a delivery address now to make your first delivery
+                  checkout faster.
+                </p>
+              </div>
+
+              <button
+                type="button"
+                class="profile-empty-address-button"
+                data-action="add-address"
+              >
+                <span>Add an address</span>
+                <i data-lucide="arrow-right"></i>
+              </button>
+            </div>
+          </section>
+
+          <!-- =================================================
+               ACCOUNT
+          ================================================== -->
+
+          <section class="profile-card">
+            <div class="profile-card-heading">
+              <div>
+                <span>Account</span>
+                <h2>Account settings</h2>
+
+                <p>Manage your LocalLink account and preferences.</p>
+              </div>
+            </div>
+
+            <div class="profile-settings-list">
+              <button
+                type="button"
+                class="profile-setting-item"
+                data-action="notification-settings"
+              >
+                <span class="profile-setting-icon">
+                  <i data-lucide="bell"></i>
+                </span>
+
+                <span class="profile-setting-content">
+                  <strong>Notifications</strong>
+                  <small> Manage order and service updates </small>
+                </span>
+
+                <i data-lucide="chevron-right"></i>
+              </button>
+
+              <button
+                type="button"
+                class="profile-setting-item"
+                data-action="privacy-settings"
+              >
+                <span class="profile-setting-icon">
+                  <i data-lucide="shield-check"></i>
+                </span>
+
+                <span class="profile-setting-content">
+                  <strong>Privacy & safety</strong>
+                  <small> Manage your privacy preferences </small>
+                </span>
+
+                <i data-lucide="chevron-right"></i>
+              </button>
+            </div>
+          </section>
+        </div>
+      </div>
+    </main>
+
+    <!-- =====================================================
+         ADDRESS MODAL
+         Hidden until Add address is selected.
+    ====================================================== -->
+
+    <div
+      class="profile-modal-overlay"
+      id="address-modal"
+      aria-hidden="true"
+      hidden
+    >
+      <section
+        class="profile-modal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="address-modal-title"
+      >
+        <div class="profile-modal-heading">
+          <div>
+            <span>Delivery address</span>
+
+            <h2 id="address-modal-title">Add an address</h2>
+          </div>
+
+          <button
+            type="button"
+            class="profile-modal-close"
+            data-action="close-address-modal"
+            aria-label="Close"
+          >
+            <i data-lucide="x"></i>
+          </button>
+        </div>
+
+        <form id="address-form" class="profile-address-form">
+          <!-- LABEL -->
+
+          <label class="profile-form-field">
+            <span>Address label</span>
+
+            <input
+              type="text"
+              id="address-label"
+              name="label"
+              placeholder="e.g. Home"
+              maxlength="30"
+            />
+
+            <small
+              class="profile-form-error"
+              data-address-error="label"
+            ></small>
+          </label>
+
+          <!-- ADDRESS -->
+
+          <label class="profile-form-field">
+            <span>Delivery address</span>
+
+            <textarea
+              id="address-value"
+              name="address"
+              placeholder="Enter your delivery address"
+              rows="3"
+            ></textarea>
+
+            <small
+              class="profile-form-error"
+              data-address-error="address"
+            ></small>
+          </label>
+
+          <!-- LANDMARK -->
+
+          <label class="profile-form-field">
+            <span>
+              Landmark
+              <small>Optional</small>
+            </span>
+
+            <input
+              type="text"
+              id="address-landmark"
+              name="landmark"
+              placeholder="e.g. Opposite..."
+            />
+          </label>
+
+          <!-- DEFAULT -->
+
+          <label class="profile-default-address-option">
+            <input type="checkbox" id="address-default" name="isDefault" />
+
+            <span class="profile-checkbox"></span>
+
+            <span>
+              <strong>Make this my default address</strong>
+
+              <small>
+                LocalLink will select this address first during delivery
+                checkout.
+              </small>
+            </span>
+          </label>
+
+          <div class="profile-address-privacy">
+            <i data-lucide="shield-check"></i>
+
+            <p>
+              Your exact delivery address is kept private and is only used when
+              needed to fulfil your order.
+            </p>
+          </div>
+
+          <div class="profile-modal-actions">
+            <button
+              type="button"
+              class="profile-modal-cancel"
+              data-action="close-address-modal"
+            >
+              Cancel
+            </button>
+
+            <button type="submit" class="profile-modal-save">
+              <span>Save address</span>
+              <i data-lucide="check"></i>
+            </button>
+          </div>
+        </form>
+      </section>
+    </div>
+
+    <!-- =====================================================
+     PERSONAL INFORMATION MODAL
+====================================================== -->
+
+    <div
+      class="profile-modal-overlay"
+      id="personal-info-modal"
+      aria-hidden="true"
+      hidden
+    >
+      <section
+        class="profile-modal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="personal-info-modal-title"
+      >
+        <div class="profile-modal-heading">
+          <div>
+            <span>Account details</span>
+
+            <h2 id="personal-info-modal-title">Edit personal information</h2>
+          </div>
+
+          <button
+            type="button"
+            class="profile-modal-close"
+            data-action="close-personal-info"
+            aria-label="Close"
+          >
+            <i data-lucide="x"></i>
+          </button>
+        </div>
+
+        <form id="personal-info-form" class="profile-address-form">
+          <!-- FULL NAME -->
+
+          <label class="profile-form-field">
+            <span>Full name</span>
+
+            <input
+              type="text"
+              id="personal-name"
+              name="name"
+              autocomplete="name"
+              placeholder="Enter your full name"
+            />
+
+            <small
+              class="profile-form-error"
+              data-personal-error="name"
+            ></small>
+          </label>
+
+          <!-- PHONE -->
+
+          <label class="profile-form-field">
+            <span>Phone number</span>
+
+            <input
+              type="tel"
+              id="personal-phone"
+              name="phone"
+              autocomplete="tel"
+              placeholder="e.g. 08012345678"
+            />
+
+            <small
+              class="profile-form-error"
+              data-personal-error="phone"
+            ></small>
+          </label>
+
+          <div class="profile-address-privacy">
+            <i data-lucide="shield-check"></i>
+
+            <p>
+              Your contact information is kept private and is only shared when
+              necessary to fulfil an order or service request.
+            </p>
+          </div>
+
+          <div class="profile-modal-actions">
+            <button
+              type="button"
+              class="profile-modal-cancel"
+              data-action="close-personal-info"
+            >
+              Cancel
+            </button>
+
+            <button type="submit" class="profile-modal-save">
+              <span>Save changes</span>
+              <i data-lucide="check"></i>
+            </button>
+          </div>
+        </form>
+      </section>
+    </div>
+
+    <!-- =====================================================
+     DELETE ADDRESS CONFIRMATION
+====================================================== -->
+
+    <div
+      class="profile-modal-overlay"
+      id="delete-address-modal"
+      aria-hidden="true"
+      hidden
+    >
+      <section
+        class="profile-modal profile-delete-modal"
+        role="alertdialog"
+        aria-modal="true"
+        aria-labelledby="delete-address-title"
+      >
+        <div class="profile-delete-icon">
+          <i data-lucide="trash-2"></i>
+        </div>
+
+        <div class="profile-delete-content">
+          <h2 id="delete-address-title">Remove saved address?</h2>
+
+          <p>
+            This address will be removed from your saved delivery addresses.
+          </p>
+        </div>
+
+        <div class="profile-delete-preview">
+          <strong id="delete-address-label"></strong>
+          <span id="delete-address-value"></span>
+        </div>
+
+        <div class="profile-modal-actions">
+          <button
+            type="button"
+            class="profile-modal-cancel"
+            data-action="cancel-delete-address"
+          >
+            Cancel
+          </button>
+
+          <button
+            type="button"
+            class="profile-delete-confirm"
+            data-action="confirm-delete-address"
+          >
+            Delete address
+          </button>
+        </div>
+      </section>
+    </div>
+    <!-- =====================================================
+         MOBILE BOTTOM NAVIGATION
+    ====================================================== -->
+
+    <nav class="mobile-bottom-navigation">
+      <a href="./index.html">
+        <i data-lucide="house"></i>
+        <span>Home</span>
+      </a>
+
+      <a href="./category.html">
+        <i data-lucide="compass"></i>
+        <span>Explore</span>
+      </a>
+
+      <a href="./orders.html">
+        <i data-lucide="package"></i>
+        <span>Orders</span>
+      </a>
+
+      <a href="./saved.html">
+        <i data-lucide="heart"></i>
+        <span>Saved</span>
+      </a>
+
+      <a href="./profile.html">
+        <i data-lucide="user"></i>
+        <span>Profile</span>
+      </a>
+    </nav>
+
+    <!-- =====================================================
+         SEARCH OVERLAY
+    ====================================================== -->
+
+  <!-- =====================================================
+     SEARCH OVERLAY
+====================================================== -->
+
+<section
+  class="search-overlay"
+  id="search-overlay"
+  aria-hidden="true"
+  aria-label="Search LocalLink"
+>
+  <div class="search-overlay-content">
+
+    <!-- =================================================
+         SEARCH HEADER
+    ================================================== -->
+
+    <div class="search-overlay-header">
+
+      <div class="search-overlay-heading">
+        <div>
+          <span class="search-eyebrow">
+            LocalLink Search
+          </span>
+
+          <h2>What are you looking for?</h2>
+
+          <p>
+            Search products from local stores or find
+            services from local professionals.
+          </p>
+        </div>
+
+        <button
+          type="button"
+          id="close-search"
+          class="close-search-button"
+          aria-label="Close search"
+        >
+          <i data-lucide="x"></i>
+        </button>
+      </div>
+
+
+      <!-- SEARCH INPUT -->
+
+      <form
+        id="overlay-search-form"
+        class="overlay-search-form"
+      >
+        <div class="overlay-search-field">
+
+          <span class="overlay-search-icon">
+            <i data-lucide="search"></i>
+          </span>
+
+          <input
+            type="search"
+            id="overlay-search-input"
+            placeholder="Try rice, phone charger, plumber..."
+            autocomplete="off"
+            aria-label="Search LocalLink"
+          />
+
+          <button
+            type="submit"
+            class="overlay-search-button"
+          >
+            <span>Search</span>
+
+            <i data-lucide="arrow-right"></i>
+          </button>
+
+        </div>
+      </form>
+
+    </div>
+
+
+    <!-- =================================================
+         SEARCH TYPE
+    ================================================== -->
+
+    <div class="search-type-area">
+
+      <div class="search-type-heading">
+        <span>Search in</span>
+
+        <p>
+          Choose the type of result you want to find.
+        </p>
+      </div>
+
+
+      <div
+        class="search-type-selector"
+        id="search-type-toggle"
+      >
+
+        <!-- PRODUCTS -->
+
+        <button
+          type="button"
+          id="product-search-button"
+          value="product"
+          class="active"
+          aria-pressed="true"
+        >
+          <span class="search-type-icon">
+            <i data-lucide="shopping-bag"></i>
+          </span>
+
+          <span class="search-type-copy">
+            <strong>Products</strong>
+
+            <small>
+              Items from local stores
+            </small>
+          </span>
+
+          <span class="search-type-selected">
+            <i data-lucide="check"></i>
+          </span>
+        </button>
+
+
+        <!-- SERVICES -->
+
+        <button
+          type="button"
+          id="service-search-button"
+          value="service"
+          aria-pressed="false"
+        >
+          <span class="search-type-icon">
+            <i data-lucide="briefcase-business"></i>
+          </span>
+
+          <span class="search-type-copy">
+            <strong>Services</strong>
+
+            <small>
+              Local professionals and services
+            </small>
+          </span>
+
+          <span class="search-type-selected">
+            <i data-lucide="check"></i>
+          </span>
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <!-- =================================================
+         RECENT SEARCHES
+
+         search.js inserts the recent-search section here
+         dynamically.
+    ================================================== -->
+
+
+    <!-- =================================================
+         RESULTS
+    ================================================== -->
+
+    <div
+      id="search-results"
+      class="search-results"
+      aria-live="polite"
+    ></div>
+
+  </div>
+</section>
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- This page requires a completed onboarding profile. -->
+    <script type="module" src="./js/auth-guard.js"></script>
+
+    <script type="module" src="./js/profile.js"></script>
+  </body>
+</html>

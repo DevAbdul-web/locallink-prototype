@@ -1,0 +1,664 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Track Service | LocalLink</title>
+
+    <!-- GLOBAL -->
+    <link rel="stylesheet" href="./css/style.css" />
+
+    <!-- PAGE -->
+    <link rel="stylesheet" href="./css/service-tracking.css" />
+  </head>
+
+  <body>
+    <!-- =====================================================
+         GLOBAL HEADER
+    ====================================================== -->
+
+    <header class="app-header">
+      <a href="./index.html" class="brand">
+        <span class="brand-icon">
+          <i data-lucide="map-pin"></i>
+        </span>
+
+        <span class="brand-name"> LocalLink </span>
+      </a>
+
+      <nav class="desktop-navigation">
+        <a href="./index.html">
+          <i data-lucide="house"></i>
+          <span>Home</span>
+        </a>
+
+        <a href="./category.html">
+          <i data-lucide="compass"></i>
+          <span>Explore</span>
+        </a>
+
+        <button type="button" data-action="open-search">
+          <i data-lucide="search"></i>
+          <span>Search</span>
+        </button>
+      </nav>
+
+      <div class="header-right">
+        <div class="header-location">
+          <i data-lucide="map-pin"></i>
+          <span>Ilorin, Kwara</span>
+        </div>
+
+        <a href="./cart.html" class="header-cart-button" aria-label="Cart">
+          <i data-lucide="shopping-cart"></i>
+
+          <span class="cart-count-badge" data-cart-count hidden> 0 </span>
+        </a>
+
+        <nav class="header-actions">
+          <a href="./orders.html" class="header-action">
+            <i data-lucide="package"></i>
+            <span class="header-action-label"> Orders </span>
+          </a>
+
+          <a href="./saved.html" class="header-action">
+            <i data-lucide="heart"></i>
+            <span class="header-action-label"> Saved </span>
+          </a>
+
+          <a href="./profile.html" class="profile-button" aria-label="Profile">
+            <i data-lucide="user"></i>
+          </a>
+        </nav>
+
+        <button
+          type="button"
+          class="mobile-search-trigger"
+          data-action="open-search"
+          aria-label="Search"
+        >
+          <i data-lucide="search"></i>
+        </button>
+      </div>
+    </header>
+
+    <!-- =====================================================
+         SERVICE TRACKING
+    ====================================================== -->
+
+    <main class="service-tracking-main">
+      <!-- ===================================================
+           TOP NAVIGATION
+      ==================================================== -->
+
+      <div class="tracking-topbar">
+        <a href="./orders.html" class="tracking-back-link">
+          <i data-lucide="arrow-left"></i>
+
+          <span> Back to orders </span>
+        </a>
+      </div>
+
+      <!-- ===================================================
+           REQUEST NOT FOUND
+      ==================================================== -->
+
+      <section id="tracking-not-found" class="tracking-not-found" hidden>
+        <div class="tracking-not-found-icon">
+          <i data-lucide="circle-alert"></i>
+        </div>
+
+        <h1>Request not found</h1>
+
+        <p>We couldn't find this service request.</p>
+
+        <a href="./explore.html"> Explore services </a>
+      </section>
+
+      <!-- ===================================================
+           TRACKING EXPERIENCE
+      ==================================================== -->
+
+      <section id="tracking-layout" class="tracking-experience">
+        <!-- =================================================
+             REQUEST HEADER
+        ================================================== -->
+
+        <header class="tracking-request-header">
+          <div class="tracking-request-identity">
+            <div class="tracking-request-title-row">
+              <div>
+                <span class="tracking-eyebrow"> Service request </span>
+
+                <h1 id="tracking-service-name"></h1>
+              </div>
+
+              <span id="tracking-status-badge" class="tracking-status-badge">
+                Pending
+              </span>
+            </div>
+
+            <div class="tracking-request-meta">
+              <span id="tracking-request-id"></span>
+
+              <span class="tracking-meta-divider" aria-hidden="true"></span>
+
+              <span id="tracking-provider-name"></span>
+            </div>
+          </div>
+
+          <a id="tracking-view-service" class="tracking-view-service" href="#">
+            <span> View service </span>
+
+            <i data-lucide="arrow-up-right"></i>
+          </a>
+        </header>
+
+        <!-- =================================================
+             LIVE JOURNEY HERO
+        ================================================== -->
+
+        <section class="tracking-live-hero">
+          <div class="tracking-live-hero-main">
+            <div id="tracking-current-icon" class="tracking-current-icon">
+              <i data-lucide="clock-3"></i>
+            </div>
+
+            <div class="tracking-current-content">
+              <div class="tracking-live-label-row">
+                <span class="tracking-live-label"> Current status </span>
+
+                <div
+                  id="tracking-live-indicator"
+                  class="tracking-live-indicator"
+                >
+                  <span></span>
+
+                  Live
+                </div>
+              </div>
+
+              <h2 id="tracking-current-title">Request pending</h2>
+
+              <p id="tracking-current-description">
+                Your request has been sent to the provider.
+              </p>
+            </div>
+          </div>
+
+          <!-- ===============================================
+               JOURNEY PROGRESS
+          ================================================ -->
+
+          <div class="tracking-journey">
+            <div class="tracking-journey-heading">
+              <span> Your journey </span>
+
+              <strong id="tracking-progress-text"> Request submitted </strong>
+            </div>
+
+            <div id="tracking-progress" class="tracking-progress">
+              <!-- Generated by JavaScript -->
+            </div>
+          </div>
+        </section>
+
+        <!-- =================================================
+             ACTION STAGE
+
+             Only the action relevant to the current
+             lifecycle stage appears here.
+        ================================================== -->
+
+        <section class="tracking-action-stage">
+          <!-- ===============================================
+               PAYMENT / QUOTE
+          ================================================ -->
+
+          <section
+            id="tracking-payment-card"
+            class="tracking-payment-card"
+            hidden
+          ></section>
+
+          <!-- ===============================================
+               COMPLETION / OTP
+          ================================================ -->
+
+          <section
+            id="tracking-completion-card"
+            class="tracking-completion-card"
+            hidden
+          ></section>
+        </section>
+
+        <!-- =================================================
+             LOWER EXPERIENCE
+        ================================================== -->
+
+        <div class="tracking-content-grid">
+          <!-- ===============================================
+               MAIN INFORMATION
+          ================================================ -->
+
+          <div class="tracking-information-column">
+            <!-- =============================================
+                 SERVICE SNAPSHOT
+            ============================================== -->
+
+            <section class="tracking-service-snapshot">
+              <div class="tracking-section-title">
+                <div>
+                  <span> Service </span>
+
+                  <h2>Request overview</h2>
+                </div>
+              </div>
+
+              <div class="tracking-service-overview">
+                <img
+                  id="tracking-service-image"
+                  class="tracking-service-image"
+                  src=""
+                  alt=""
+                />
+
+                <div class="tracking-service-overview-content">
+                  <span class="tracking-card-label"> Requested service </span>
+
+                  <!--
+                    The service name itself is already
+                    shown prominently in the page header.
+
+                    JS still finds #tracking-service-name
+                    there.
+                  -->
+
+                  <div class="tracking-service-meta">
+                    <span>
+                      <i data-lucide="wallet"></i>
+
+                      <strong id="tracking-price"></strong>
+                    </span>
+
+                    <span>
+                      <i data-lucide="calendar-days"></i>
+
+                      <span id="tracking-schedule"></span>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <!-- =============================================
+                 REQUEST DETAILS
+            ============================================== -->
+
+            <section class="tracking-details-section">
+              <div class="tracking-section-title">
+                <div>
+                  <span> Request </span>
+
+                  <h2>Service details</h2>
+                </div>
+              </div>
+
+              <div class="tracking-details-grid">
+                <div class="tracking-detail">
+                  <span> Service method </span>
+
+                  <strong id="tracking-fulfillment"></strong>
+                </div>
+
+                <div class="tracking-detail">
+                  <span> Preferred schedule </span>
+
+                  <strong id="tracking-preferred-schedule"></strong>
+                </div>
+
+                <div
+                  id="tracking-address-detail"
+                  class="tracking-detail"
+                  hidden
+                >
+                  <span> Service address </span>
+
+                  <strong id="tracking-address"></strong>
+                </div>
+
+                <div class="tracking-detail">
+                  <span> Contact </span>
+
+                  <strong id="tracking-contact"></strong>
+                </div>
+              </div>
+
+              <div class="tracking-request-description">
+                <span> What you requested </span>
+
+                <p id="tracking-description"></p>
+              </div>
+
+              <div
+                id="tracking-location-privacy"
+                class="tracking-location-privacy"
+                hidden
+              >
+                <i data-lucide="shield-check"></i>
+
+                <div>
+                  <strong> Your location stays private </strong>
+
+                  <p>
+                    Your address is used only to arrange this service and is
+                    shared only when needed to complete your request.
+                  </p>
+                </div>
+              </div>
+            </section>
+          </div>
+
+          <!-- ===============================================
+               CONTEXT SIDEBAR
+          ================================================ -->
+
+          <aside class="tracking-context-sidebar">
+            <!-- =============================================
+                 PROVIDER
+            ============================================== -->
+
+            <section class="tracking-provider-panel">
+              <span class="tracking-card-label"> Your provider </span>
+
+              <div class="tracking-provider-heading">
+                <div class="tracking-provider-avatar">
+                  <i data-lucide="store"></i>
+                </div>
+
+                <div>
+                  <h2 id="tracking-provider-card-name"></h2>
+
+                  <p id="tracking-provider-location"></p>
+                </div>
+              </div>
+
+              <div class="tracking-provider-status">
+                <i data-lucide="badge-check"></i>
+
+                <span> LocalLink provider </span>
+              </div>
+
+              <a
+                id="tracking-provider-link"
+                href="#"
+                class="tracking-provider-button"
+              >
+                <span> View provider </span>
+
+                <i data-lucide="arrow-right"></i>
+              </a>
+            </section>
+
+            <!-- =============================================
+                 PAYMENT PROTECTION
+            ============================================== -->
+
+            <section class="tracking-protection-panel">
+              <div class="tracking-protection-icon">
+                <i data-lucide="shield-check"></i>
+              </div>
+
+              <div>
+                <span> LocalLink protection </span>
+
+                <h2>Your transaction is protected</h2>
+
+                <p>
+                  Payments made through LocalLink remain protected while your
+                  service is being completed.
+                </p>
+              </div>
+            </section>
+
+            <!-- =============================================
+                 COMPLETION SAFETY
+            ============================================== -->
+
+            <section class="tracking-safety-panel">
+              <i data-lucide="key-round"></i>
+
+              <div>
+                <strong> Completion code safety </strong>
+
+                <p>
+                  If LocalLink sends you a completion code, share it only after
+                  the agreed service has actually been completed.
+                </p>
+              </div>
+            </section>
+          </aside>
+        </div>
+      </section>
+    </main>
+
+    <!-- =====================================================
+         MOBILE BOTTOM NAVIGATION
+    ====================================================== -->
+
+    <nav class="mobile-bottom-navigation">
+      <a href="./index.html">
+        <i data-lucide="house"></i>
+        <span>Home</span>
+      </a>
+
+      <a href="./category.html">
+        <i data-lucide="compass"></i>
+        <span>Explore</span>
+      </a>
+
+      <a href="./orders.html" class="active">
+        <i data-lucide="package"></i>
+        <span>Orders</span>
+      </a>
+
+      <a href="./saved.html">
+        <i data-lucide="heart"></i>
+        <span>Saved</span>
+      </a>
+
+      <a href="./profile.html">
+        <i data-lucide="user"></i>
+        <span>Profile</span>
+      </a>
+    </nav>
+
+<!-- =====================================================
+     SEARCH OVERLAY
+====================================================== -->
+
+<section
+  class="search-overlay"
+  id="search-overlay"
+  aria-hidden="true"
+  aria-label="Search LocalLink"
+>
+  <div class="search-overlay-content">
+
+    <!-- =================================================
+         SEARCH HEADER
+    ================================================== -->
+
+    <div class="search-overlay-header">
+
+      <div class="search-overlay-heading">
+        <div>
+          <span class="search-eyebrow">
+            LocalLink Search
+          </span>
+
+          <h2>What are you looking for?</h2>
+
+          <p>
+            Search products from local stores or find
+            services from local professionals.
+          </p>
+        </div>
+
+        <button
+          type="button"
+          id="close-search"
+          class="close-search-button"
+          aria-label="Close search"
+        >
+          <i data-lucide="x"></i>
+        </button>
+      </div>
+
+
+      <!-- SEARCH INPUT -->
+
+      <form
+        id="overlay-search-form"
+        class="overlay-search-form"
+      >
+        <div class="overlay-search-field">
+
+          <span class="overlay-search-icon">
+            <i data-lucide="search"></i>
+          </span>
+
+          <input
+            type="search"
+            id="overlay-search-input"
+            placeholder="Try rice, phone charger, plumber..."
+            autocomplete="off"
+            aria-label="Search LocalLink"
+          />
+
+          <button
+            type="submit"
+            class="overlay-search-button"
+          >
+            <span>Search</span>
+
+            <i data-lucide="arrow-right"></i>
+          </button>
+
+        </div>
+      </form>
+
+    </div>
+
+
+    <!-- =================================================
+         SEARCH TYPE
+    ================================================== -->
+
+    <div class="search-type-area">
+
+      <div class="search-type-heading">
+        <span>Search in</span>
+
+        <p>
+          Choose the type of result you want to find.
+        </p>
+      </div>
+
+
+      <div
+        class="search-type-selector"
+        id="search-type-toggle"
+      >
+
+        <!-- PRODUCTS -->
+
+        <button
+          type="button"
+          id="product-search-button"
+          value="product"
+          class="active"
+          aria-pressed="true"
+        >
+          <span class="search-type-icon">
+            <i data-lucide="shopping-bag"></i>
+          </span>
+
+          <span class="search-type-copy">
+            <strong>Products</strong>
+
+            <small>
+              Items from local stores
+            </small>
+          </span>
+
+          <span class="search-type-selected">
+            <i data-lucide="check"></i>
+          </span>
+        </button>
+
+
+        <!-- SERVICES -->
+
+        <button
+          type="button"
+          id="service-search-button"
+          value="service"
+          aria-pressed="false"
+        >
+          <span class="search-type-icon">
+            <i data-lucide="briefcase-business"></i>
+          </span>
+
+          <span class="search-type-copy">
+            <strong>Services</strong>
+
+            <small>
+              Local professionals and services
+            </small>
+          </span>
+
+          <span class="search-type-selected">
+            <i data-lucide="check"></i>
+          </span>
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <!-- =================================================
+         RECENT SEARCHES
+
+         search.js inserts the recent-search section here
+         dynamically.
+    ================================================== -->
+
+
+    <!-- =================================================
+         RESULTS
+    ================================================== -->
+
+    <div
+      id="search-results"
+      class="search-results"
+      aria-live="polite"
+    ></div>
+
+  </div>
+</section>
+
+    <!-- =====================================================
+         SCRIPTS
+    ====================================================== -->
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script type="module" src="./js/auth-guard.js"></script>
+
+    <script type="module" src="./js/service-tracking.js"></script>
+  </body>
+</html>

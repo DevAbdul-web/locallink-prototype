@@ -1,0 +1,587 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>LocalLink | Discover Nearby Businesses</title>
+
+    <!-- GLOBAL -->
+    <link rel="stylesheet" href="./css/style.css" />
+
+    <!-- PAGE -->
+    <link rel="stylesheet" href="./css/home.css" />
+  </head>
+
+  <body>
+    <!-- =====================================================
+         GLOBAL HEADER
+    ====================================================== -->
+
+    <header class="app-header">
+      <a href="index.html" class="brand brand-link">
+        <span class="brand-icon">
+          <i data-lucide="map-pin"></i>
+        </span>
+
+        <span class="brand-name">LocalLink</span>
+      </a>
+
+      <nav class="desktop-navigation" aria-label="Main navigation">
+        <a href="index.html" class="active">
+          <i data-lucide="house"></i>
+          <span>Home</span>
+        </a>
+
+        <a href="category.html">
+          <i data-lucide="compass"></i>
+          <span>Explore</span>
+        </a>
+
+        <button
+          type="button"
+          class="desktop-search-trigger search-trigger"
+          data-action="open-search"
+          aria-label="Open search"
+        >
+          <i data-lucide="search"></i>
+          <span>Search</span>
+        </button>
+      </nav>
+
+      <div class="header-right">
+        <div class="header-location">
+          <i data-lucide="map-pin"></i>
+          <span>Ilorin, Kwara</span>
+        </div>
+
+        <a href="./cart.html" class="header-cart-button" aria-label="Cart">
+          <i data-lucide="shopping-cart"></i>
+
+          <span class="cart-count-badge" data-cart-count hidden> 0 </span>
+        </a>
+
+        <nav class="header-actions">
+          <a href="./orders.html" class="header-action">
+            <i data-lucide="package"></i>
+            <span class="header-action-label">Orders</span>
+          </a>
+
+          <a href="./saved.html" class="header-action">
+            <i data-lucide="heart"></i>
+            <span class="header-action-label">Saved</span>
+          </a>
+
+          <a href="./profile.html" class="profile-button" aria-label="Profile">
+            <i data-lucide="user"></i>
+          </a>
+        </nav>
+
+        <button
+          type="button"
+          class="mobile-search-trigger"
+          data-action="open-search"
+          aria-label="Search"
+        >
+          <i data-lucide="search"></i>
+        </button>
+      </div>
+    </header>
+
+    <!-- =====================================================
+         MAIN
+    ====================================================== -->
+
+    <main class="main-content home-main">
+      <!-- ===================================================
+           HERO
+      ==================================================== -->
+
+      <section class="home-hero">
+        <img
+          src="./assets/images/ilorin-city.png"
+          alt="A view of Ilorin"
+          class="hero-image"
+        />
+
+        <div class="hero-overlay"></div>
+
+        <div class="hero-content">
+          <span class="hero-eyebrow">
+            <i data-lucide="map-pin"></i>
+            Discover what's around you
+          </span>
+
+          <h1>
+            Everything you need,
+            <br />
+            closer to home.
+          </h1>
+
+          <p class="hero-description">
+            Shop from nearby businesses and find trusted local professionals
+            without searching all over town.
+          </p>
+
+          <button
+            type="button"
+            class="hero-search-trigger"
+            data-action="open-search"
+            aria-label="Search LocalLink"
+          >
+            <span class="hero-search-content">
+              <i data-lucide="search"></i>
+
+              <span>What are you looking for?</span>
+            </span>
+
+            <span class="hero-search-button"> Search </span>
+          </button>
+
+          <div class="hero-trust-row">
+            <span>
+              <i data-lucide="map-pin"></i>
+              Ilorin, Kwara
+            </span>
+
+            <span>
+              <i data-lucide="store"></i>
+              Nearby businesses
+            </span>
+
+            <span>
+              <i data-lucide="badge-check"></i>
+              Local providers
+            </span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================================================
+           QUICK DISCOVERY
+      ==================================================== -->
+
+      <section class="home-discovery-strip">
+        <a href="./category.html?type=stores">
+          <span class="discovery-icon">
+            <i data-lucide="shopping-bag"></i>
+          </span>
+
+          <span>
+            <strong>Shop nearby</strong>
+            <small>Browse local stores</small>
+          </span>
+
+          <i data-lucide="arrow-right"></i>
+        </a>
+
+        <a href="./category.html?type=providers">
+          <span class="discovery-icon">
+            <i data-lucide="wrench"></i>
+          </span>
+
+          <span>
+            <strong>Find a service</strong>
+            <small>Discover local professionals</small>
+          </span>
+
+          <i data-lucide="arrow-right"></i>
+        </a>
+      </section>
+
+      <!-- ===================================================
+           CATEGORIES
+      ==================================================== -->
+
+      <section class="categories-section home-section">
+        <div class="section-heading">
+          <div>
+            <span class="section-kicker">Explore</span>
+
+            <h2>What do you need today?</h2>
+
+            <p>Browse products and services available around you.</p>
+          </div>
+        </div>
+
+        <template class="category-template">
+          <button class="category-card" type="button">
+            <span class="category-icon"></span>
+
+            <span class="category-name"></span>
+
+            <span class="category-description"></span>
+          </button>
+        </template>
+
+        <div class="category-scroll-wrapper">
+          <div id="categories"></div>
+        </div>
+
+        <template class="service-category-template">
+          <button class="service-category-card" type="button">
+            <span class="service-category-icon"></span>
+
+            <span class="service-category-name"></span>
+          </button>
+        </template>
+
+        <div class="category-scroll-wrapper service-category-wrapper">
+          <div id="service-categories"></div>
+        </div>
+      </section>
+
+      <!-- ===================================================
+           NEARBY STORES
+      ==================================================== -->
+
+      <section class="stores-section home-section">
+        <div class="section-heading">
+          <div>
+            <span class="section-kicker">Close to you</span>
+
+            <h2>Nearby stores</h2>
+
+            <p>Discover businesses close to your current area.</p>
+          </div>
+
+          <button type="button" id="see-all-stores">
+            <span>See all</span>
+            <i data-lucide="arrow-right"></i>
+          </button>
+        </div>
+
+        <template class="store-template">
+          <article class="store-card">
+            <div class="business-image-wrapper">
+              <img class="store-image" src="" alt="" />
+            </div>
+
+            <div class="store-card-content">
+              <div class="business-card-heading">
+                <div>
+                  <h3></h3>
+                  <p class="store-category"></p>
+                </div>
+              </div>
+
+              <p class="store-description"></p>
+
+              <div class="business-card-meta">
+                <div class="business-meta-item">
+                  <i data-lucide="star"></i>
+                  <p class="store-rating"></p>
+                </div>
+
+                <div class="business-meta-item">
+                  <i data-lucide="navigation"></i>
+                  <p class="store-distance"></p>
+                </div>
+              </div>
+
+              <div class="business-location">
+                <i data-lucide="map-pin"></i>
+                <p class="store-location"></p>
+              </div>
+
+              <div class="business-status">
+                <i data-lucide="clock-3"></i>
+                <p class="store-status"></p>
+              </div>
+
+              <button
+                type="button"
+                class="business-view-button"
+                data-action="view-business"
+              >
+                <span>View business</span>
+                <i data-lucide="arrow-right"></i>
+              </button>
+            </div>
+          </article>
+        </template>
+
+        <div id="stores"></div>
+      </section>
+
+      <!-- ===================================================
+           SERVICES
+      ==================================================== -->
+
+      <section class="services-section home-section">
+        <div class="section-heading">
+          <div>
+            <span class="section-kicker">Help nearby</span>
+
+            <h2>Services near you</h2>
+
+            <p>Find local professionals who can help with what you need.</p>
+          </div>
+
+          <button type="button" id="see-all-services">
+            <span>See all</span>
+            <i data-lucide="arrow-right"></i>
+          </button>
+        </div>
+
+        <template class="service-provider-template">
+          <article class="service-provider-card">
+            <div class="business-image-wrapper">
+              <img class="provider-image" src="" alt="" />
+            </div>
+
+            <div class="service-provider-card-content">
+              <div class="business-card-heading">
+                <div>
+                  <h3></h3>
+                  <p class="provider-category"></p>
+                </div>
+              </div>
+
+              <p class="provider-description"></p>
+
+              <div class="business-card-meta">
+                <div class="business-meta-item">
+                  <i data-lucide="star"></i>
+                  <p class="provider-rating"></p>
+                </div>
+
+                <div class="business-meta-item">
+                  <i data-lucide="navigation"></i>
+                  <p class="provider-distance"></p>
+                </div>
+              </div>
+
+              <div class="business-location">
+                <i data-lucide="map-pin"></i>
+                <p class="provider-location"></p>
+              </div>
+
+              <div class="business-status">
+                <i data-lucide="clock-3"></i>
+                <p class="provider-status"></p>
+              </div>
+
+              <button
+                type="button"
+                class="business-view-button"
+                data-action="view-business"
+              >
+                <span>View provider</span>
+                <i data-lucide="arrow-right"></i>
+              </button>
+            </div>
+          </article>
+        </template>
+
+        <div id="service-providers"></div>
+      </section>
+
+      <!-- ===================================================
+           EXPLORE CTA
+      ==================================================== -->
+
+      <section class="home-explore-cta">
+        <div>
+          <span class="section-kicker"> More around you </span>
+
+          <h2>Explore your local marketplace.</h2>
+
+          <p>
+            Browse more stores, products and services available around Ilorin.
+          </p>
+        </div>
+
+        <a href="./category.html">
+          Explore LocalLink
+          <i data-lucide="arrow-right"></i>
+        </a>
+      </section>
+    </main>
+
+    <!-- =====================================================
+         MOBILE NAVIGATION
+    ====================================================== -->
+
+    <nav class="mobile-bottom-navigation" aria-label="Mobile navigation">
+      <a href="index.html" class="active">
+        <i data-lucide="house"></i>
+        <span>Home</span>
+      </a>
+
+      <a href="./category.html">
+        <i data-lucide="compass"></i>
+        <span>Explore</span>
+      </a>
+
+      <a href="./orders.html">
+        <i data-lucide="package"></i>
+        <span>Orders</span>
+      </a>
+
+      <a href="./saved.html">
+        <i data-lucide="heart"></i>
+        <span>Saved</span>
+      </a>
+
+      <a href="./profile.html">
+        <i data-lucide="user"></i>
+        <span>Profile</span>
+      </a>
+    </nav>
+
+    <!-- =====================================================
+     SEARCH OVERLAY
+====================================================== -->
+
+    <section
+      class="search-overlay"
+      id="search-overlay"
+      aria-hidden="true"
+      aria-label="Search LocalLink"
+    >
+      <div class="search-overlay-content">
+        <!-- =================================================
+         SEARCH HEADER
+    ================================================== -->
+
+        <div class="search-overlay-header">
+          <div class="search-overlay-heading">
+            <div>
+              <span class="search-eyebrow"> LocalLink Search </span>
+
+              <h2>What are you looking for?</h2>
+
+              <p>
+                Search products from local stores or find services from local
+                professionals.
+              </p>
+            </div>
+
+            <button
+              type="button"
+              id="close-search"
+              class="close-search-button"
+              aria-label="Close search"
+            >
+              <i data-lucide="x"></i>
+            </button>
+          </div>
+
+          <!-- SEARCH INPUT -->
+
+          <form id="overlay-search-form" class="overlay-search-form">
+            <div class="overlay-search-field">
+              <span class="overlay-search-icon">
+                <i data-lucide="search"></i>
+              </span>
+
+              <input
+                type="search"
+                id="overlay-search-input"
+                placeholder="Try rice, phone charger, plumber..."
+                autocomplete="off"
+                aria-label="Search LocalLink"
+              />
+
+              <button type="submit" class="overlay-search-button">
+                <span>Search</span>
+
+                <i data-lucide="arrow-right"></i>
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <!-- =================================================
+         SEARCH TYPE
+    ================================================== -->
+
+        <div class="search-type-area">
+          <div class="search-type-heading">
+            <span>Search in</span>
+
+            <p>Choose the type of result you want to find.</p>
+          </div>
+
+          <div class="search-type-selector" id="search-type-toggle">
+            <!-- PRODUCTS -->
+
+            <button
+              type="button"
+              id="product-search-button"
+              value="product"
+              class="active"
+              aria-pressed="true"
+            >
+              <span class="search-type-icon">
+                <i data-lucide="shopping-bag"></i>
+              </span>
+
+              <span class="search-type-copy">
+                <strong>Products</strong>
+
+                <small> Items from local stores </small>
+              </span>
+
+              <span class="search-type-selected">
+                <i data-lucide="check"></i>
+              </span>
+            </button>
+
+            <!-- SERVICES -->
+
+            <button
+              type="button"
+              id="service-search-button"
+              value="service"
+              aria-pressed="false"
+            >
+              <span class="search-type-icon">
+                <i data-lucide="briefcase-business"></i>
+              </span>
+
+              <span class="search-type-copy">
+                <strong>Services</strong>
+
+                <small> Local professionals and services </small>
+              </span>
+
+              <span class="search-type-selected">
+                <i data-lucide="check"></i>
+              </span>
+            </button>
+          </div>
+        </div>
+
+        <!-- =================================================
+         RECENT SEARCHES
+
+         search.js inserts the recent-search section here
+         dynamically.
+    ================================================== -->
+
+        <!-- =================================================
+         RESULTS
+    ================================================== -->
+
+        <div
+          id="search-results"
+          class="search-results"
+          aria-live="polite"
+        ></div>
+      </div>
+    </section>
+
+    <!-- =====================================================
+         SCRIPTS
+    ====================================================== -->
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script type="module" src="./js/auth-guard.js"></script>
+
+    <script type="module" src="./js/app.js"></script>
+  </body>
+</html>

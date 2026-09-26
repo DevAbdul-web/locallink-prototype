@@ -1,0 +1,564 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Service | LocalLink</title>
+
+    <link rel="stylesheet" href="./css/style.css" />
+
+    <!-- PAGE -->
+    <link rel="stylesheet" href="./css/service-details.css" />
+  </head>
+
+  <body>
+    <!-- =====================================================
+         GLOBAL HEADER
+    ====================================================== -->
+
+    <header class="app-header">
+      <a href="./index.html" class="brand">
+        <span class="brand-icon">
+          <i data-lucide="map-pin"></i>
+        </span>
+
+        <span class="brand-name">LocalLink</span>
+      </a>
+
+      <nav class="desktop-navigation">
+        <a href="./index.html">
+          <i data-lucide="house"></i>
+          <span>Home</span>
+        </a>
+
+        <a href="./category.html">
+          <i data-lucide="compass"></i>
+          <span>Explore</span>
+        </a>
+
+        <button type="button" data-action="open-search">
+          <i data-lucide="search"></i>
+          <span>Search</span>
+        </button>
+      </nav>
+
+      <div class="header-right">
+        <div class="header-location">
+          <i data-lucide="map-pin"></i>
+          <span>Ilorin, Kwara</span>
+        </div>
+
+        <!-- CART -->
+        <a href="./cart.html" class="header-cart-button" aria-label="Cart">
+          <i data-lucide="shopping-cart"></i>
+
+          <span class="cart-count-badge" data-cart-count hidden> 0 </span>
+        </a>
+
+        <nav class="header-actions">
+          <a href="./orders.html" class="header-action">
+            <i data-lucide="package"></i>
+            <span class="header-action-label">Orders</span>
+          </a>
+
+          <a href="./saved.html" class="header-action">
+            <i data-lucide="heart"></i>
+            <span class="header-action-label">Saved</span>
+          </a>
+
+          <a href="./profile.html" class="profile-button" aria-label="Profile">
+            <i data-lucide="user"></i>
+          </a>
+        </nav>
+
+        <button
+          type="button"
+          class="mobile-search-trigger"
+          data-action="open-search"
+          aria-label="Search"
+        >
+          <i data-lucide="search"></i>
+        </button>
+      </div>
+    </header>
+
+    <!-- =====================================================
+         SERVICE DETAILS PAGE
+    ====================================================== -->
+
+    <main class="service-details-main">
+      <!-- ===================================================
+           SERVICE OVERVIEW
+      ==================================================== -->
+
+      <section class="service-overview">
+        <!-- SERVICE GALLERY -->
+
+        <div class="service-gallery">
+          <div class="service-main-image-wrapper">
+            <img
+              id="service-main-image"
+              class="service-main-image"
+              src=""
+              alt=""
+            />
+
+            <button
+              type="button"
+              class="service-gallery-arrow service-gallery-prev"
+              data-action="previous-service-image"
+              aria-label="Previous image"
+            >
+              <i data-lucide="chevron-left"></i>
+            </button>
+
+            <button
+              type="button"
+              class="service-gallery-arrow service-gallery-next"
+              data-action="next-service-image"
+              aria-label="Next image"
+            >
+              <i data-lucide="chevron-right"></i>
+            </button>
+
+            <span
+              id="service-gallery-counter"
+              class="service-gallery-counter"
+            ></span>
+          </div>
+
+          <div
+            id="service-gallery-thumbnails"
+            class="service-gallery-thumbnails"
+          ></div>
+        </div>
+
+        <!-- SERVICE INFORMATION -->
+
+        <div class="service-info">
+          <div class="service-local-label">
+            <i data-lucide="map-pin"></i>
+            <span>Service available nearby</span>
+          </div>
+
+          <h1 id="service-name" class="service-title"></h1>
+
+          <div class="service-meta">
+            <div class="service-rating">
+              <i data-lucide="star"></i>
+              <span id="service-rating"></span>
+            </div>
+
+            <button
+              type="button"
+              id="service-review-link"
+              class="service-review-link"
+            ></button>
+
+            <span class="service-meta-divider">•</span>
+
+            <div class="service-availability">
+              <span class="service-availability-dot"></span>
+              <span id="service-availability"></span>
+            </div>
+          </div>
+
+          <div class="service-price-area">
+            <p id="service-price" class="service-price"></p>
+            <span id="service-pricing-type" class="service-pricing-type"></span>
+          </div>
+
+          <p id="service-short-description" class="service-summary"></p>
+
+          <div id="service-highlights" class="service-highlights"></div>
+        </div>
+
+        <!-- =================================================
+             REQUEST PANEL
+        ================================================== -->
+
+        <aside class="service-request-card">
+          <div class="service-request-heading">
+            <div>
+              <span class="service-request-eyebrow">Need this service?</span>
+              <h2>Request a local provider</h2>
+            </div>
+
+            <span class="service-request-local-badge">
+              <i data-lucide="map-pin"></i>
+              Local
+            </span>
+          </div>
+
+          <p class="service-request-description">
+            Tell the provider what you need, where you need it, and your
+            preferred time.
+          </p>
+
+          <div class="service-request-summary">
+            <div class="service-request-summary-row">
+              <span>
+                <i data-lucide="briefcase-business"></i>
+                Service
+              </span>
+
+              <strong id="request-service-name"></strong>
+            </div>
+
+            <div class="service-request-summary-row">
+              <span>
+                <i data-lucide="wallet"></i>
+                Price
+              </span>
+
+              <strong id="request-service-price"></strong>
+            </div>
+
+            <div class="service-request-summary-row">
+              <span>
+                <i data-lucide="map-pin"></i>
+                Provider
+              </span>
+
+              <strong id="request-provider-name"></strong>
+            </div>
+          </div>
+
+          <div class="service-request-actions">
+            <button
+              type="button"
+              class="service-request-button"
+              data-action="request-service"
+            >
+              <i data-lucide="calendar-plus"></i>
+              <span>Request Service</span>
+            </button>
+
+            <button
+              type="button"
+              class="service-save-button"
+              data-action="save-service"
+            >
+              <i data-lucide="heart"></i>
+              <span>Save Service</span>
+            </button>
+          </div>
+
+          <div class="service-request-note">
+            <i data-lucide="info"></i>
+
+            <p>
+              Sending a request does not automatically confirm the service.
+              You'll provide the request details before submitting.
+            </p>
+          </div>
+        </aside>
+      </section>
+
+      <!-- ===================================================
+           LOCAL PROVIDER
+      ==================================================== -->
+
+      <section class="service-provider-section">
+        <div class="service-section-heading">
+          <div>
+            <span class="service-section-eyebrow">Local provider</span>
+            <h2>Provided by a business near you</h2>
+          </div>
+
+          <i data-lucide="briefcase-business"></i>
+        </div>
+
+        <article class="service-details-provider-card">
+          <img
+            id="service-provider-image"
+            class="service-provider-image"
+            src=""
+            alt=""
+          />
+
+          <div class="service-provider-content">
+            <div class="service-provider-title">
+              <h3 id="service-provider-name"></h3>
+
+              <span
+                id="service-provider-status"
+                class="service-provider-status"
+              ></span>
+            </div>
+
+            <div class="service-provider-meta">
+              <span class="service-provider-rating">
+                <i data-lucide="star"></i>
+
+                <span id="service-provider-rating"></span>
+
+                <span id="service-provider-reviews"></span>
+              </span>
+
+              <span class="service-provider-location">
+                <i data-lucide="map-pin"></i>
+
+                <span id="service-provider-location"></span>
+
+                <span>•</span>
+
+                <span id="service-provider-distance"></span>
+              </span>
+            </div>
+
+            <p id="service-provider-description"></p>
+          </div>
+
+          <button
+            type="button"
+            class="service-view-business-button"
+            data-action="view-business"
+          >
+            <span>View Business</span>
+            <i data-lucide="arrow-right"></i>
+          </button>
+        </article>
+      </section>
+
+      <!-- ===================================================
+           SERVICE INFORMATION / REVIEWS
+      ==================================================== -->
+
+      <section class="service-content-section">
+        <nav class="service-content-tabs" aria-label="Service information">
+          <button
+            type="button"
+            class="service-content-tab active"
+            data-service-tab="description"
+          >
+            Description
+          </button>
+
+          <button
+            type="button"
+            class="service-content-tab"
+            data-service-tab="reviews"
+          >
+            Reviews
+          </button>
+        </nav>
+
+        <!-- DESCRIPTION -->
+
+        <div id="service-description-panel" class="service-content-panel">
+          <div class="service-content-heading">
+            <h2>About this service</h2>
+
+            <p>Service information provided by the local provider.</p>
+          </div>
+
+          <p id="service-full-description" class="service-full-description"></p>
+
+          <div id="service-details-list" class="service-details-list"></div>
+        </div>
+
+        <!-- REVIEWS -->
+
+        <div id="service-reviews-panel" class="service-content-panel" hidden>
+          <div class="service-reviews-heading">
+            <div>
+              <h2>Customer Reviews</h2>
+              <p>What customers say about this service.</p>
+            </div>
+
+            <div class="service-review-summary">
+              <strong id="service-average-rating"></strong>
+              <span id="service-review-count"></span>
+            </div>
+          </div>
+
+          <div id="service-reviews-list"></div>
+        </div>
+      </section>
+    </main>
+
+    <!-- =====================================================
+         MOBILE BOTTOM NAVIGATION
+    ====================================================== -->
+
+    <nav class="mobile-bottom-navigation">
+      <a href="./index.html">
+        <i data-lucide="house"></i>
+        <span>Home</span>
+      </a>
+
+      <a href="./category.html">
+        <i data-lucide="compass"></i>
+        <span>Explore</span>
+      </a>
+
+      <a href="./orders.html">
+        <i data-lucide="package"></i>
+        <span>Orders</span>
+      </a>
+
+      <a href="./saved.html">
+        <i data-lucide="heart"></i>
+        <span>Saved</span>
+      </a>
+
+      <a href="./profile.html">
+        <i data-lucide="user"></i>
+        <span>Profile</span>
+      </a>
+    </nav>
+
+    <!-- =====================================================
+     SEARCH OVERLAY
+====================================================== -->
+
+    <section
+      class="search-overlay"
+      id="search-overlay"
+      aria-hidden="true"
+      aria-label="Search LocalLink"
+    >
+      <div class="search-overlay-content">
+        <!-- =================================================
+         SEARCH HEADER
+    ================================================== -->
+
+        <div class="search-overlay-header">
+          <div class="search-overlay-heading">
+            <div>
+              <span class="search-eyebrow"> LocalLink Search </span>
+
+              <h2>What are you looking for?</h2>
+
+              <p>
+                Search products from local stores or find services from local
+                professionals.
+              </p>
+            </div>
+
+            <button
+              type="button"
+              id="close-search"
+              class="close-search-button"
+              aria-label="Close search"
+            >
+              <i data-lucide="x"></i>
+            </button>
+          </div>
+
+          <!-- SEARCH INPUT -->
+
+          <form id="overlay-search-form" class="overlay-search-form">
+            <div class="overlay-search-field">
+              <span class="overlay-search-icon">
+                <i data-lucide="search"></i>
+              </span>
+
+              <input
+                type="search"
+                id="overlay-search-input"
+                placeholder="Try rice, phone charger, plumber..."
+                autocomplete="off"
+                aria-label="Search LocalLink"
+              />
+
+              <button type="submit" class="overlay-search-button">
+                <span>Search</span>
+
+                <i data-lucide="arrow-right"></i>
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <!-- =================================================
+         SEARCH TYPE
+    ================================================== -->
+
+        <div class="search-type-area">
+          <div class="search-type-heading">
+            <span>Search in</span>
+
+            <p>Choose the type of result you want to find.</p>
+          </div>
+
+          <div class="search-type-selector" id="search-type-toggle">
+            <!-- PRODUCTS -->
+
+            <button
+              type="button"
+              id="product-search-button"
+              value="product"
+              class="active"
+              aria-pressed="true"
+            >
+              <span class="search-type-icon">
+                <i data-lucide="shopping-bag"></i>
+              </span>
+
+              <span class="search-type-copy">
+                <strong>Products</strong>
+
+                <small> Items from local stores </small>
+              </span>
+
+              <span class="search-type-selected">
+                <i data-lucide="check"></i>
+              </span>
+            </button>
+
+            <!-- SERVICES -->
+
+            <button
+              type="button"
+              id="service-search-button"
+              value="service"
+              aria-pressed="false"
+            >
+              <span class="search-type-icon">
+                <i data-lucide="briefcase-business"></i>
+              </span>
+
+              <span class="search-type-copy">
+                <strong>Services</strong>
+
+                <small> Local professionals and services </small>
+              </span>
+
+              <span class="search-type-selected">
+                <i data-lucide="check"></i>
+              </span>
+            </button>
+          </div>
+        </div>
+
+        <!-- =================================================
+         RECENT SEARCHES
+
+         search.js inserts the recent-search section here
+         dynamically.
+    ================================================== -->
+
+        <!-- =================================================
+         RESULTS
+    ================================================== -->
+
+        <div
+          id="search-results"
+          class="search-results"
+          aria-live="polite"
+        ></div>
+      </div>
+    </section>
+
+    <!-- =====================================================
+         SCRIPTS
+    ====================================================== -->
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script type="module" src="./js/auth-guard.js"></script>
+    <script type="module" src="./js/service-details.js"></script>
+  </body>
+</html>

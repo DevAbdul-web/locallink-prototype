@@ -1,0 +1,759 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta
+      name="description"
+      content="View local businesses, products, and services on LocalLink."
+    />
+
+    <title>Business | LocalLink</title>
+
+    <link rel="stylesheet" href="./css/style.css" />
+
+    <!-- PAGE -->
+    <link rel="stylesheet" href="./css/business-profile.css" />
+  </head>
+
+  <body>
+    <!-- =========================================
+         GLOBAL HEADER
+    ========================================== -->
+    <header class="app-header">
+      <!-- Brand -->
+      <a href="index.html" class="brand brand-link">
+        <span class="brand-icon">
+          <i data-lucide="map-pin"></i>
+        </span>
+
+        <span class="brand-name">LocalLink</span>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav class="desktop-navigation" aria-label="Main navigation">
+        <a href="index.html">
+          <i data-lucide="house"></i>
+          <span>Home</span>
+        </a>
+
+        <a href="category.html" class="active">
+          <i data-lucide="compass"></i>
+          <span>Explore</span>
+        </a>
+
+        <button
+          type="button"
+          class="desktop-search-trigger search-trigger"
+          aria-label="Open search"
+        >
+          <i data-lucide="search"></i>
+          <span>Search</span>
+        </button>
+      </nav>
+
+      <div class="header-right">
+        <div class="header-location">
+          <i data-lucide="map-pin"></i>
+          <span>Ilorin, Kwara</span>
+        </div>
+
+        <!-- CART -->
+        <a href="./cart.html" class="header-cart-button" aria-label="Cart">
+          <i data-lucide="shopping-cart"></i>
+
+          <span class="cart-count-badge" data-cart-count hidden> 0 </span>
+        </a>
+
+        <nav class="header-actions">
+          <a href="./orders.html" class="header-action">
+            <i data-lucide="package"></i>
+            <span class="header-action-label">Orders</span>
+          </a>
+
+          <a href="./saved.html" class="header-action">
+            <i data-lucide="heart"></i>
+            <span class="header-action-label">Saved</span>
+          </a>
+
+          <a href="./profile.html" class="profile-button" aria-label="Profile">
+            <i data-lucide="user"></i>
+          </a>
+        </nav>
+
+        <button
+          type="button"
+          class="mobile-search-trigger"
+          data-action="open-search"
+          aria-label="Search"
+        >
+          <i data-lucide="search"></i>
+        </button>
+      </div>
+    </header>
+
+    <!-- =========================================
+         BUSINESS PAGE
+    ========================================== -->
+    <main class="main-content business-main">
+      <!-- =======================================
+           BUSINESS IMAGE GALLERY
+      ======================================== -->
+      <section class="business-gallery" aria-label="Business photos">
+        <div class="business-gallery-main">
+          <img id="business-main-image" src="" alt="" />
+        </div>
+
+        <div class="business-gallery-grid" id="business-gallery-grid">
+          <!-- Additional business images
+               will be rendered with JavaScript -->
+        </div>
+      </section>
+
+      <!-- =======================================
+           BUSINESS IDENTITY
+      ======================================== -->
+      <section class="business-identity">
+        <div class="business-identity-content">
+          <div class="business-title-row">
+            <h1 id="business-name">Business Name</h1>
+
+            <span class="business-category" id="business-category">
+              Category
+            </span>
+          </div>
+
+          <div class="business-meta">
+            <span class="business-rating">
+              <i data-lucide="star"></i>
+
+              <span id="business-rating">0.0</span>
+
+              <span id="business-reviews-count"> (0 reviews) </span>
+            </span>
+
+            <span class="business-distance">
+              <i data-lucide="navigation"></i>
+
+              <span id="business-distance"> 0 km </span>
+            </span>
+          </div>
+
+          <p class="business-location">
+            <i data-lucide="map-pin"></i>
+
+            <span id="business-location"> Business location </span>
+          </p>
+
+          <p class="business-description" id="business-description">
+            Business description
+          </p>
+        </div>
+
+        <!-- Business-level actions -->
+        <div class="business-identity-actions">
+          <button
+            type="button"
+            class="business-save-button"
+            data-action="save-business"
+          >
+            <i data-lucide="heart"></i>
+            <span>Save</span>
+          </button>
+
+          <button
+            type="button"
+            class="business-share-button"
+            data-action="share-business"
+          >
+            <i data-lucide="share-2"></i>
+            <span>Share</span>
+          </button>
+        </div>
+      </section>
+
+      <!-- =======================================
+           BUSINESS TABS
+      ======================================== -->
+      <nav class="business-tabs" aria-label="Business information">
+        <button type="button" class="business-tab active" data-tab="products">
+          <i data-lucide="shopping-bag"></i>
+          <span>Products</span>
+        </button>
+
+        <button type="button" class="business-tab" data-tab="services">
+          <i data-lucide="briefcase-business"></i>
+          <span>Services</span>
+        </button>
+
+        <button type="button" class="business-tab" data-tab="reviews">
+          <i data-lucide="star"></i>
+          <span>Reviews</span>
+        </button>
+
+        <button type="button" class="business-tab" data-tab="about">
+          <i data-lucide="info"></i>
+          <span>About</span>
+        </button>
+      </nav>
+
+      <!-- =======================================
+           MAIN BUSINESS CONTENT
+      ======================================== -->
+      <section class="business-content">
+        <!-- =====================================
+             LEFT / MAIN COLUMN
+        ====================================== -->
+        <div class="business-primary-content">
+          <!-- ================================
+               PRODUCTS PANEL
+          ================================= -->
+          <section
+            class="business-tab-panel active"
+            id="business-products-panel"
+            data-panel="products"
+          >
+            <div class="business-section-heading">
+              <div>
+                <h2>Products</h2>
+
+                <p>Browse products available from this business.</p>
+              </div>
+            </div>
+
+            <!--
+              No "View All" button.
+              Products continue naturally down the page.
+            -->
+            <div class="business-items-grid" id="business-products"></div>
+            <div id="business-products"></div>
+
+            <button
+              type="button"
+              id="load-more-products"
+              class="load-more-items"
+              hidden
+            >
+              Load more products
+            </button>
+            <div
+              class="business-empty-state"
+              id="business-products-empty"
+              hidden
+            >
+              <i data-lucide="package-open"></i>
+
+              <h3>No products available</h3>
+
+              <p>This business does not currently have products listed.</p>
+            </div>
+          </section>
+
+          <!-- ================================
+               SERVICES PANEL
+          ================================= -->
+          <section
+            class="business-tab-panel"
+            id="business-services-panel"
+            data-panel="services"
+          >
+            <div class="business-section-heading">
+              <div>
+                <h2>Services</h2>
+
+                <p>Explore services offered by this business.</p>
+              </div>
+            </div>
+
+            <div class="business-items-grid" id="business-services"></div>
+            <button
+              type="button"
+              id="load-more-services"
+              class="load-more-items"
+              hidden
+            >
+              Load more services
+            </button>
+            <div
+              class="business-empty-state"
+              id="business-services-empty"
+              hidden
+            >
+              <i data-lucide="briefcase-business"></i>
+
+              <h3>No services available</h3>
+
+              <p>This business does not currently have services listed.</p>
+            </div>
+          </section>
+
+          <!-- ================================
+               REVIEWS PANEL
+          ================================= -->
+          <section
+            class="business-tab-panel"
+            id="business-reviews-panel"
+            data-panel="reviews"
+          >
+            <div class="business-section-heading">
+              <div>
+                <h2>Customer Reviews</h2>
+
+                <p>See what customers say about this business.</p>
+              </div>
+            </div>
+
+            <div class="business-reviews" id="business-reviews">
+              <!-- Reviews will be rendered here -->
+            </div>
+
+            <div
+              class="business-empty-state"
+              id="business-reviews-empty"
+              hidden
+            >
+              <i data-lucide="message-square"></i>
+
+              <h3>No reviews yet</h3>
+
+              <p>This business has not received any reviews yet.</p>
+            </div>
+          </section>
+
+          <!-- ================================
+               ABOUT PANEL
+          ================================= -->
+          <section
+            class="business-tab-panel"
+            id="business-about-panel"
+            data-panel="about"
+          >
+            <div class="business-section-heading">
+              <div>
+                <h2>About</h2>
+
+                <p>Learn more about this business.</p>
+              </div>
+            </div>
+
+            <div class="business-about" id="business-about">
+              <!-- About information rendered here -->
+            </div>
+          </section>
+        </div>
+
+        <!-- =====================================
+             BUSINESS INFORMATION SIDEBAR
+        ====================================== -->
+        <aside class="business-info-card">
+          <!-- Open / Closed -->
+          <button
+            type="button"
+            class="mobile-business-info-toggle"
+            aria-expanded="false"
+          >
+            <span>
+              <i data-lucide="info"></i>
+              Business information
+            </span>
+
+            <i data-lucide="chevron-up"></i>
+          </button>
+          <div class="business-status">
+            <span class="status-dot" id="business-status-dot"></span>
+
+            <strong id="business-status"> Business status </strong>
+          </div>
+
+          <!-- Opening Hours -->
+          <div class="business-info-section">
+            <h3>
+              <i data-lucide="clock"></i>
+              <span>Opening Hours</span>
+            </h3>
+
+            <div class="business-opening-hours" id="business-opening-hours">
+              <!-- Opening hours rendered here -->
+            </div>
+            <button
+              type="button"
+              id="opening-hours-toggle"
+              class="opening-hours-toggle"
+            >
+              See all
+            </button>
+          </div>
+
+          <!-- Contact -->
+          <div class="business-info-section">
+            <h3>
+              <i data-lucide="phone"></i>
+              <span>Contact</span>
+            </h3>
+
+            <div class="business-contact-list">
+              <div class="business-contact-item">
+                <i data-lucide="phone"></i>
+
+                <span id="business-phone">Phone unavailable</span>
+              </div>
+
+              <div class="business-contact-item">
+                <i data-lucide="mail"></i>
+
+                <span id="business-email">Email unavailable</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Address -->
+          <div class="business-info-section">
+            <h3>
+              <i data-lucide="map-pin"></i>
+              <span>Address</span>
+            </h3>
+
+            <p id="business-address">Address unavailable</p>
+          </div>
+
+          <!-- Delivery -->
+          <div class="business-info-section">
+            <h3>
+              <i data-lucide="truck"></i>
+              <span id="business-delivery-label">Delivery</span>
+            </h3>
+
+            <p id="business-delivery">Delivery information unavailable</p>
+          </div>
+        </aside>
+      </section>
+
+      <!-- =======================================
+           PRODUCT CARD TEMPLATE
+      ======================================== -->
+      <template id="business-product-template">
+        <article class="business-item-card">
+          <!-- Product image -->
+          <div class="business-item-image-wrapper">
+            <img class="business-item-image" src="" alt="" />
+
+            <button
+              type="button"
+              class="item-save-button"
+              data-action="save-product"
+              aria-label="Save product"
+            >
+              <i data-lucide="heart"></i>
+            </button>
+          </div>
+
+          <!-- Product information -->
+          <div class="business-item-body">
+            <h3 class="business-item-name">Product name</h3>
+
+            <p class="business-item-price">₦0</p>
+
+            <p class="business-item-availability">Availability</p>
+
+            <div class="business-item-actions">
+              <button
+                type="button"
+                class="item-primary-action"
+                data-action="add-to-cart"
+              >
+                <i data-lucide="shopping-cart"></i>
+
+                <span>Add to Cart</span>
+              </button>
+
+              <button
+                type="button"
+                class="item-details-action"
+                data-action="product-details"
+              >
+                <span>View Details</span>
+
+                <i data-lucide="arrow-right"></i>
+              </button>
+            </div>
+          </div>
+        </article>
+      </template>
+
+      <!-- =======================================
+           SERVICE CARD TEMPLATE
+      ======================================== -->
+      <template id="business-service-template">
+        <article class="business-item-card">
+          <!-- Service image -->
+          <div class="business-item-image-wrapper">
+            <img class="business-item-image" src="" alt="" />
+
+            <!-- Save overlays image -->
+            <button
+              type="button"
+              class="item-save-button"
+              data-action="save-service"
+              aria-label="Save service"
+            >
+              <i data-lucide="heart"></i>
+            </button>
+          </div>
+
+          <!-- Service information -->
+          <div class="business-item-body">
+            <h3 class="business-item-name">Service name</h3>
+
+            <p class="business-item-price">₦0</p>
+
+            <p class="business-item-availability">Availability</p>
+
+            <div class="business-item-actions">
+              <button
+                type="button"
+                class="item-primary-action"
+                data-action="request-service"
+              >
+                <i data-lucide="calendar-plus"></i>
+
+                <span>Request Service</span>
+              </button>
+
+              <button
+                type="button"
+                class="item-details-action"
+                data-action="service-details"
+              >
+                <span>View Details</span>
+
+                <i data-lucide="arrow-right"></i>
+              </button>
+            </div>
+          </div>
+        </article>
+      </template>
+    </main>
+
+    <div id="gallery-viewer" class="gallery-viewer" hidden>
+      <button
+        type="button"
+        id="gallery-close"
+        class="gallery-close"
+        aria-label="Close gallery"
+      >
+        <i data-lucide="x"></i>
+      </button>
+
+      <div class="gallery-viewer-content">
+        <button
+          type="button"
+          id="gallery-previous"
+          class="gallery-navigation gallery-previous"
+          aria-label="Previous image"
+        >
+          <i data-lucide="chevron-left"></i>
+        </button>
+
+        <div class="gallery-current-image">
+          <img id="gallery-viewer-image" src="" alt="" />
+
+          <p id="gallery-counter"></p>
+        </div>
+
+        <button
+          type="button"
+          id="gallery-next"
+          class="gallery-navigation gallery-next"
+          aria-label="Next image"
+        >
+          <i data-lucide="chevron-right"></i>
+        </button>
+      </div>
+
+      <div id="gallery-thumbnails" class="gallery-thumbnails"></div>
+    </div>
+
+    <!-- =====================================================
+     SEARCH OVERLAY
+====================================================== -->
+
+    <section
+      class="search-overlay"
+      id="search-overlay"
+      aria-hidden="true"
+      aria-label="Search LocalLink"
+    >
+      <div class="search-overlay-content">
+        <!-- =================================================
+         SEARCH HEADER
+    ================================================== -->
+
+        <div class="search-overlay-header">
+          <div class="search-overlay-heading">
+            <div>
+              <span class="search-eyebrow"> LocalLink Search </span>
+
+              <h2>What are you looking for?</h2>
+
+              <p>
+                Search products from local stores or find services from local
+                professionals.
+              </p>
+            </div>
+
+            <button
+              type="button"
+              id="close-search"
+              class="close-search-button"
+              aria-label="Close search"
+            >
+              <i data-lucide="x"></i>
+            </button>
+          </div>
+
+          <!-- SEARCH INPUT -->
+
+          <form id="overlay-search-form" class="overlay-search-form">
+            <div class="overlay-search-field">
+              <span class="overlay-search-icon">
+                <i data-lucide="search"></i>
+              </span>
+
+              <input
+                type="search"
+                id="overlay-search-input"
+                placeholder="Try rice, phone charger, plumber..."
+                autocomplete="off"
+                aria-label="Search LocalLink"
+              />
+
+              <button type="submit" class="overlay-search-button">
+                <span>Search</span>
+
+                <i data-lucide="arrow-right"></i>
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <!-- =================================================
+         SEARCH TYPE
+    ================================================== -->
+
+        <div class="search-type-area">
+          <div class="search-type-heading">
+            <span>Search in</span>
+
+            <p>Choose the type of result you want to find.</p>
+          </div>
+
+          <div class="search-type-selector" id="search-type-toggle">
+            <!-- PRODUCTS -->
+
+            <button
+              type="button"
+              id="product-search-button"
+              value="product"
+              class="active"
+              aria-pressed="true"
+            >
+              <span class="search-type-icon">
+                <i data-lucide="shopping-bag"></i>
+              </span>
+
+              <span class="search-type-copy">
+                <strong>Products</strong>
+
+                <small> Items from local stores </small>
+              </span>
+
+              <span class="search-type-selected">
+                <i data-lucide="check"></i>
+              </span>
+            </button>
+
+            <!-- SERVICES -->
+
+            <button
+              type="button"
+              id="service-search-button"
+              value="service"
+              aria-pressed="false"
+            >
+              <span class="search-type-icon">
+                <i data-lucide="briefcase-business"></i>
+              </span>
+
+              <span class="search-type-copy">
+                <strong>Services</strong>
+
+                <small> Local professionals and services </small>
+              </span>
+
+              <span class="search-type-selected">
+                <i data-lucide="check"></i>
+              </span>
+            </button>
+          </div>
+        </div>
+
+        <!-- =================================================
+         RECENT SEARCHES
+
+         search.js inserts the recent-search section here
+         dynamically.
+    ================================================== -->
+
+        <!-- =================================================
+         RESULTS
+    ================================================== -->
+
+        <div
+          id="search-results"
+          class="search-results"
+          aria-live="polite"
+        ></div>
+      </div>
+    </section>
+
+    <!-- =========================================
+         MOBILE BOTTOM NAVIGATION
+    ========================================== -->
+    <nav class="mobile-bottom-navigation" aria-label="Mobile navigation">
+      <a href="index.html">
+        <i data-lucide="house"></i>
+        <span>Home</span>
+      </a>
+
+      <a href="category.html">
+        <i data-lucide="compass"></i>
+        <span>Explore</span>
+      </a>
+
+      <a href="orders.html">
+        <i data-lucide="package"></i>
+        <span>Orders</span>
+      </a>
+
+      <a href="saved.html">
+        <i data-lucide="heart"></i>
+        <span>Saved</span>
+      </a>
+
+      <a href="profile.html">
+        <i data-lucide="user"></i>
+        <span>Profile</span>
+      </a>
+    </nav>
+
+    <!-- =========================================
+         LUCIDE
+    ========================================== -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script type="module" src="./js/auth-guard.js"></script>
+    <script type="module" src="./js/business.js"></script>
+  </body>
+</html>

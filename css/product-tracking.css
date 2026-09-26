@@ -1,0 +1,561 @@
+/* =========================================================
+   LIVE ORDER TRACKING
+========================================================= */
+
+.tracking-page {
+  width: min(760px, 100%);
+
+  min-height: 100vh;
+
+  margin: 0 auto;
+
+  background: #fff;
+}
+
+.tracking-header {
+  display: grid;
+  grid-template-columns: 36px 1fr auto;
+  align-items: center;
+  gap: 10px;
+
+  padding: 14px 18px;
+
+  border-bottom: 1px solid var(--color-border);
+}
+
+.tracking-header > a:first-child {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 34px;
+  height: 34px;
+
+  border-radius: 50%;
+
+  color: var(--color-text-primary);
+}
+
+.tracking-header svg {
+  width: 16px;
+}
+
+.tracking-header > div {
+  display: grid;
+  gap: 2px;
+}
+
+.tracking-header strong {
+  font-size: 0.6rem;
+}
+
+.tracking-header span {
+  color: var(--color-text-secondary);
+
+  font-size: 0.47rem;
+}
+
+.tracking-header > a:last-child {
+  color: var(--color-text-primary);
+
+  font-size: 0.63rem;
+  font-weight: 800;
+
+  text-decoration: none;
+}
+
+/* CURRENT STATUS */
+
+.tracking-live-area {
+  padding: 38px 20px 24px;
+
+  border-bottom: 1px solid var(--color-border);
+}
+
+.tracking-status-visual {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  text-align: center;
+}
+
+.tracking-main-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 54px;
+  height: 54px;
+
+  margin-bottom: 13px;
+
+  border-radius: 50%;
+
+  background: rgba(37, 99, 235, 0.08);
+  color: #2563eb;
+}
+
+.tracking-main-icon svg {
+  width: 23px;
+}
+
+.tracking-eyebrow {
+  color: #2563eb;
+
+  font-size: 0.5rem;
+  font-weight: 800;
+
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.tracking-status-visual h1 {
+  margin: 6px 0;
+
+  font-size: 1.25rem;
+}
+
+.tracking-status-visual > p {
+  max-width: 480px;
+
+  margin: 0;
+
+  color: var(--color-text-secondary);
+
+  font-size: 0.59rem;
+  line-height: 1.55;
+}
+
+/* LOADING */
+
+.tracking-live-loading {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+
+  margin-top: 15px;
+  padding: 7px 10px;
+
+  border-radius: 999px;
+
+  background: rgba(23, 21, 28, 0.04);
+
+  color: var(--color-text-secondary);
+
+  font-size: 0.5rem;
+  font-weight: 600;
+}
+
+.tracking-live-loading > span {
+  width: 10px;
+  height: 10px;
+
+  border: 2px solid rgba(37, 99, 235, 0.2);
+  border-top-color: #2563eb;
+  border-radius: 50%;
+
+  animation: tracking-spin 0.8s linear infinite;
+}
+
+@keyframes tracking-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ROUTE */
+
+.tracking-route {
+  max-width: 560px;
+
+  margin: 30px auto 0;
+  padding: 18px;
+
+  border: 1px solid var(--color-border);
+  border-radius: 13px;
+}
+
+.tracking-route-labels {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+
+  margin-bottom: 18px;
+}
+
+.tracking-route-labels span {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+
+  font-size: 0.5rem;
+  font-weight: 600;
+}
+
+.tracking-route-labels svg {
+  width: 12px;
+}
+
+.tracking-route-line {
+  position: relative;
+
+  height: 5px;
+
+  margin: 0 8px 22px;
+
+  border-radius: 999px;
+
+  background: rgba(23, 21, 28, 0.08);
+}
+
+.tracking-route-progress {
+  position: absolute;
+  inset: 0 auto 0 0;
+
+  border-radius: inherit;
+
+  background: #2563eb;
+
+  transition: width 0.7s linear;
+}
+
+.tracking-rider {
+  position: absolute;
+  top: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 27px;
+  height: 27px;
+
+  border: 3px solid #fff;
+  border-radius: 50%;
+
+  background: #2563eb;
+  color: #fff;
+
+  transform: translate(-50%, -50%);
+  transition: left 0.7s linear;
+}
+
+.tracking-rider svg {
+  width: 12px;
+}
+
+.tracking-rider-card {
+  display: grid;
+  grid-template-columns: 34px 1fr auto;
+  align-items: center;
+  gap: 9px;
+
+  padding-top: 13px;
+
+  border-top: 1px solid var(--color-border);
+}
+
+.tracking-rider-card > span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 34px;
+  height: 34px;
+
+  border-radius: 50%;
+
+  background: rgba(23, 21, 28, 0.05);
+}
+
+.tracking-rider-card svg {
+  width: 14px;
+}
+
+.tracking-rider-card div {
+  display: grid;
+  gap: 2px;
+}
+
+.tracking-rider-card strong {
+  font-size: 0.56rem;
+}
+
+.tracking-rider-card small {
+  color: var(--color-text-secondary);
+
+  font-size: 0.47rem;
+}
+
+/* RECEIVE */
+
+.tracking-received-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+
+  width: min(360px, 100%);
+  min-height: 42px;
+
+  margin: 25px auto 0;
+
+  border: 0;
+  border-radius: 9px;
+
+  background: #15803d;
+  color: #fff;
+
+  font: inherit;
+  font-size: 0.57rem;
+  font-weight: 700;
+
+  cursor: pointer;
+}
+
+.tracking-received-button svg {
+  width: 15px;
+}
+
+/* ORDER DETAILS */
+
+.tracking-order-details {
+  padding: 22px 20px 60px;
+}
+
+.tracking-detail-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: 14px;
+}
+
+.tracking-detail-heading > div {
+  display: grid;
+  gap: 3px;
+}
+
+.tracking-detail-heading span {
+  color: var(--color-text-secondary);
+
+  font-size: 0.49rem;
+}
+
+.tracking-detail-heading strong {
+  font-size: 0.63rem;
+}
+
+.tracking-items {
+  display: grid;
+  gap: 8px;
+
+  padding: 13px 0;
+
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.tracking-item {
+  display: grid;
+  grid-template-columns: 42px 1fr auto;
+  align-items: center;
+  gap: 9px;
+}
+
+.tracking-item img {
+  width: 42px;
+  height: 42px;
+
+  border-radius: 8px;
+
+  object-fit: cover;
+}
+
+.tracking-item div {
+  display: grid;
+  gap: 2px;
+}
+
+.tracking-item strong {
+  font-size: 0.55rem;
+}
+
+.tracking-item span {
+  color: var(--color-text-secondary);
+
+  font-size: 0.47rem;
+}
+
+.tracking-total {
+  display: flex;
+  justify-content: space-between;
+
+  padding: 14px 0;
+
+  font-size: 0.58rem;
+}
+
+.tracking-payment-protection {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+
+  padding: 12px;
+
+  border-radius: 9px;
+
+  background: rgba(21, 128, 61, 0.06);
+}
+
+.tracking-payment-protection > svg {
+  flex: 0 0 auto;
+
+  width: 15px;
+
+  color: #15803d;
+}
+
+.tracking-payment-protection div {
+  display: grid;
+  gap: 3px;
+}
+
+.tracking-payment-protection strong {
+  font-size: 0.53rem;
+}
+
+.tracking-payment-protection span {
+  color: var(--color-text-secondary);
+
+  font-size: 0.48rem;
+  line-height: 1.45;
+}
+
+/* CONFIRM MODAL */
+
+.tracking-confirm-overlay {
+  position: fixed;
+  z-index: 3000;
+  inset: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 20px;
+
+  background: rgba(15, 15, 18, 0.5);
+}
+
+.tracking-confirm-overlay[hidden] {
+  display: none;
+}
+
+.tracking-confirm-modal {
+  width: min(390px, 100%);
+
+  padding: 22px;
+
+  border-radius: 14px;
+
+  background: #fff;
+}
+
+.tracking-confirm-modal > span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 40px;
+  height: 40px;
+
+  border-radius: 10px;
+
+  background: rgba(21, 128, 61, 0.08);
+  color: #15803d;
+}
+
+.tracking-confirm-modal > span svg {
+  width: 18px;
+}
+
+.tracking-confirm-modal h2 {
+  margin: 13px 0 5px;
+
+  font-size: 0.85rem;
+}
+
+.tracking-confirm-modal p {
+  margin: 0;
+
+  color: var(--color-text-secondary);
+
+  font-size: 0.55rem;
+  line-height: 1.5;
+}
+
+.tracking-confirm-modal > div {
+  display: flex;
+  justify-content: flex-end;
+  gap: 7px;
+
+  margin-top: 17px;
+}
+
+.tracking-confirm-modal button {
+  min-height: 36px;
+  padding: 0 11px;
+
+  border-radius: 8px;
+
+  font: inherit;
+  font-size: 0.52rem;
+  font-weight: 700;
+
+  cursor: pointer;
+}
+
+.tracking-confirm-modal button:first-child {
+  border: 1px solid var(--color-border);
+
+  background: #fff;
+}
+
+.tracking-confirm-modal button:last-child {
+  border: 0;
+
+  background: #15803d;
+  color: #fff;
+}
+
+/* NOT FOUND */
+
+.tracking-not-found {
+  padding: 80px 20px;
+
+  text-align: center;
+}
+
+.tracking-not-found[hidden] {
+  display: none;
+}
+
+@media (max-width: 640px) {
+  .tracking-live-area {
+    padding-top: 30px;
+  }
+
+  .tracking-confirm-overlay {
+    align-items: flex-end;
+
+    padding: 0;
+  }
+
+  .tracking-confirm-modal {
+    width: 100%;
+
+    border-radius: 16px 16px 0 0;
+  }
+}

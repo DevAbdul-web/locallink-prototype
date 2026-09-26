@@ -1,0 +1,362 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Welcome | LocalLink</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="./css/style.css" />
+
+    <link rel="stylesheet" href="./css/onboarding.css" />
+  </head>
+
+  <body class="onboarding-body">
+    <main class="onboarding">
+      <!-- ===================================================
+           INTRODUCTION SLIDES
+      ==================================================== -->
+
+      <section
+        class="onboarding-screen onboarding-intro"
+        data-onboarding-screen="intro"
+      >
+        <!-- TOP BAR -->
+
+        <header class="onboarding-intro-header">
+          <div class="onboarding-brand">
+            <span class="onboarding-brand-icon">
+              <i data-lucide="map-pin"></i>
+            </span>
+
+            <span>LocalLink</span>
+          </div>
+
+          <span class="onboarding-slide-counter">
+            <strong id="current-slide-number">1</strong>
+            <span>of</span>
+            <span>3</span>
+          </span>
+        </header>
+
+        <!-- SLIDE CONTENT -->
+
+        <div class="onboarding-slide-layout">
+          <!-- ==============================
+               TEXT SIDE
+          =============================== -->
+
+          <div class="onboarding-slide-content">
+            <div class="onboarding-slide-copy">
+              <span
+                class="onboarding-slide-eyebrow"
+                id="onboarding-slide-eyebrow"
+              >
+                Explore nearby
+              </span>
+
+              <h1 id="onboarding-slide-title">
+                Discover Local
+                <span>Businesses.</span>
+              </h1>
+
+              <p id="onboarding-slide-description">
+                Find nearby stores and trusted service providers, see what they
+                offer, and discover what's available around you.
+              </p>
+            </div>
+
+            <!-- PROGRESS DOTS -->
+
+            <div
+              class="onboarding-progress"
+              role="tablist"
+              aria-label="Onboarding progress"
+            >
+              <button
+                type="button"
+                class="onboarding-progress-dot active"
+                data-slide-index="0"
+                aria-label="Go to slide 1"
+                aria-current="step"
+              ></button>
+
+              <button
+                type="button"
+                class="onboarding-progress-dot"
+                data-slide-index="1"
+                aria-label="Go to slide 2"
+              ></button>
+
+              <button
+                type="button"
+                class="onboarding-progress-dot"
+                data-slide-index="2"
+                aria-label="Go to slide 3"
+              ></button>
+            </div>
+
+            <!-- NAVIGATION -->
+
+            <div class="onboarding-slide-navigation">
+              <button
+                type="button"
+                class="onboarding-skip-button"
+                data-action="skip-intro"
+              >
+                Skip
+              </button>
+
+              <div class="onboarding-slide-actions">
+                <button
+                  type="button"
+                  class="onboarding-slide-back"
+                  data-action="previous-slide"
+                  hidden
+                >
+                  <i data-lucide="arrow-left"></i>
+
+                  <span>Back</span>
+                </button>
+
+                <button
+                  type="button"
+                  class="onboarding-primary-button"
+                  data-action="next-slide"
+                >
+                  <span data-next-label>Next</span>
+
+                  <i data-lucide="arrow-right"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- ==============================
+               VISUAL SIDE
+          =============================== -->
+
+          <div class="onboarding-slide-visual">
+            <div class="onboarding-visual-glow"></div>
+
+            <div class="onboarding-visual-frame">
+              <img
+                id="onboarding-slide-image"
+                src="./assets/images/onboarding/discover-local.png"
+                alt="Local businesses connected through LocalLink"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================================================
+           PROFILE SETUP
+      ==================================================== -->
+
+      <section
+        class="onboarding-screen onboarding-profile"
+        data-onboarding-screen="profile"
+        hidden
+      >
+        <div class="onboarding-form-layout">
+          <!-- DESKTOP VISUAL SIDE -->
+
+          <aside class="onboarding-form-visual">
+            <img
+              class="onboarding-profile-visual-image"
+              src="./assets/images/onboarding/support-community.png"
+              alt=""
+            />
+
+            <div class="onboarding-form-visual-overlay"></div>
+
+            <div class="onboarding-form-visual-content">
+              <div class="onboarding-form-brand">
+                <span>
+                  <i data-lucide="map-pin"></i>
+                </span>
+
+                <strong>LocalLink</strong>
+              </div>
+
+              <div>
+                <span class="onboarding-visual-eyebrow"> Almost there </span>
+
+                <h2>Your neighbourhood is waiting.</h2>
+
+                <p>
+                  Create a simple profile and start discovering businesses,
+                  products and services around you.
+                </p>
+              </div>
+            </div>
+          </aside>
+
+          <!-- PROFILE FORM -->
+
+          <div class="onboarding-form-panel">
+            <div class="onboarding-mobile-brand">
+              <span>
+                <i data-lucide="map-pin"></i>
+              </span>
+
+              <strong>LocalLink</strong>
+            </div>
+
+            <button
+              type="button"
+              class="onboarding-back-button"
+              data-action="back-to-intro"
+            >
+              <i data-lucide="arrow-left"></i>
+
+              <span>Back</span>
+            </button>
+
+            <div class="onboarding-form-heading">
+              <span>Let's get to know you</span>
+
+              <h1>Create your profile</h1>
+
+              <p>
+                Just the basics for now. You can add delivery addresses and
+                other details later from your profile.
+              </p>
+            </div>
+
+            <form class="onboarding-profile-form" id="onboarding-profile-form">
+              <!-- FULL NAME -->
+
+              <label class="onboarding-field">
+                <span>Full name</span>
+
+                <div class="onboarding-input-wrapper">
+                  <i data-lucide="user"></i>
+
+                  <input
+                    type="text"
+                    id="onboarding-name"
+                    name="name"
+                    placeholder="Enter your full name"
+                    autocomplete="name"
+                  />
+                </div>
+
+                <small
+                  class="onboarding-field-error"
+                  data-error-for="name"
+                ></small>
+              </label>
+
+              <!-- PHONE -->
+
+              <label class="onboarding-field">
+                <span>Phone number</span>
+
+                <div class="onboarding-input-wrapper">
+                  <i data-lucide="phone"></i>
+
+                  <input
+                    type="tel"
+                    id="onboarding-phone"
+                    name="phone"
+                    placeholder="e.g. 0801 234 5678"
+                    autocomplete="tel"
+                  />
+                </div>
+
+                <small
+                  class="onboarding-field-error"
+                  data-error-for="phone"
+                ></small>
+              </label>
+
+              <!-- PRIVACY NOTE -->
+
+              <div class="onboarding-phone-note">
+                <i data-lucide="shield-check"></i>
+
+                <p>
+                  Your number helps with order and service communication. It
+                  won't be displayed publicly.
+                </p>
+              </div>
+
+              <button type="submit" class="onboarding-submit-button">
+                <span>Create Profile</span>
+
+                <i data-lucide="arrow-right"></i>
+              </button>
+            </form>
+
+            <p class="onboarding-form-footer">
+              You can update your information anytime from your LocalLink
+              profile.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================================================
+           SUCCESS
+      ==================================================== -->
+
+      <section
+        class="onboarding-screen onboarding-success"
+        data-onboarding-screen="success"
+        hidden
+      >
+        <div class="onboarding-success-content">
+          <div class="onboarding-success-icon">
+            <i data-lucide="check"></i>
+          </div>
+
+          <span class="onboarding-success-eyebrow"> You're all set </span>
+
+          <h1>
+            Welcome to
+            <span>LocalLink.</span>
+          </h1>
+
+          <p>
+            Your profile is ready. Start discovering businesses, products and
+            services around you.
+          </p>
+
+          <button
+            type="button"
+            class="onboarding-primary-button"
+            data-action="enter-locallink"
+          >
+            <span>Explore LocalLink</span>
+
+            <i data-lucide="arrow-right"></i>
+          </button>
+
+          <div class="onboarding-success-note">
+            <i data-lucide="map-pin"></i>
+
+            <span>
+              You can add a delivery address later from your profile.
+            </span>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script type="module" src="./js/onboarding.js"></script>
+  </body>
+</html>

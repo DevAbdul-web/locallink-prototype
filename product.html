@@ -1,0 +1,641 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Product | LocalLink</title>
+
+    <link rel="stylesheet" href="./css/style.css" />
+    <!-- PAGE -->
+    <link rel="stylesheet" href="./css/product-details.css" />
+  </head>
+
+  <body>
+    <!-- =====================================================
+         GLOBAL HEADER
+    ====================================================== -->
+
+    <header class="app-header">
+      <a href="./index.html" class="brand">
+        <span class="brand-icon">
+          <i data-lucide="map-pin"></i>
+        </span>
+
+        <span class="brand-name">LocalLink</span>
+      </a>
+
+      <nav class="desktop-navigation">
+        <a href="./index.html">
+          <i data-lucide="house"></i>
+          <span>Home</span>
+        </a>
+
+        <a href="./category.html">
+          <i data-lucide="compass"></i>
+          <span>Explore</span>
+        </a>
+
+        <button type="button" data-action="open-search">
+          <i data-lucide="search"></i>
+          <span>Search</span>
+        </button>
+      </nav>
+
+      <div class="header-right">
+        <div class="header-location">
+          <i data-lucide="map-pin"></i>
+          <span>Ilorin, Kwara</span>
+        </div>
+
+        <!-- CART -->
+        <a href="./cart.html" class="header-cart-button" aria-label="Cart">
+          <i data-lucide="shopping-cart"></i>
+
+          <span class="cart-count-badge" data-cart-count hidden> 0 </span>
+        </a>
+
+        <nav class="header-actions">
+          <a href="./orders.html" class="header-action">
+            <i data-lucide="package"></i>
+            <span class="header-action-label">Orders</span>
+          </a>
+
+          <a href="./saved.html" class="header-action">
+            <i data-lucide="heart"></i>
+            <span class="header-action-label">Saved</span>
+          </a>
+
+          <a href="./profile.html" class="profile-button" aria-label="Profile">
+            <i data-lucide="user"></i>
+          </a>
+        </nav>
+
+        <button
+          type="button"
+          class="mobile-search-trigger"
+          data-action="open-search"
+          aria-label="Search"
+        >
+          <i data-lucide="search"></i>
+        </button>
+      </div>
+    </header>
+
+    <!-- =====================================================
+         PRODUCT PAGE
+    ====================================================== -->
+
+    <main class="product-details-main">
+      <!-- ===================================================
+           PRODUCT OVERVIEW
+      ==================================================== -->
+
+      <section class="product-overview">
+        <!-- ===============================================
+             PRODUCT GALLERY
+        ================================================ -->
+
+        <div class="product-gallery">
+          <div class="product-main-image-wrapper">
+            <img
+              id="product-main-image"
+              class="product-main-image"
+              src=""
+              alt=""
+            />
+
+            <button
+              type="button"
+              class="product-gallery-arrow product-gallery-prev"
+              data-action="previous-product-image"
+              aria-label="Previous image"
+            >
+              <i data-lucide="chevron-left"></i>
+            </button>
+
+            <button
+              type="button"
+              class="product-gallery-arrow product-gallery-next"
+              data-action="next-product-image"
+              aria-label="Next image"
+            >
+              <i data-lucide="chevron-right"></i>
+            </button>
+
+            <span
+              id="product-gallery-counter"
+              class="product-gallery-counter"
+            ></span>
+          </div>
+
+          <div
+            id="product-gallery-thumbnails"
+            class="product-gallery-thumbnails"
+          ></div>
+        </div>
+
+        <!-- ===============================================
+             PRODUCT INFORMATION
+        ================================================ -->
+
+        <div class="product-info">
+          <div class="product-local-label">
+            <i data-lucide="map-pin"></i>
+            <span>Available nearby</span>
+          </div>
+
+          <h1 id="product-name" class="product-title"></h1>
+
+          <!-- Rating / reviews / availability -->
+
+          <div class="product-meta">
+            <div class="product-rating">
+              <i data-lucide="star"></i>
+
+              <span id="product-rating"></span>
+            </div>
+
+            <button
+              type="button"
+              id="product-review-link"
+              class="product-review-link"
+            ></button>
+
+            <span class="product-meta-divider">•</span>
+
+            <div class="product-availability">
+              <span class="product-availability-dot"></span>
+
+              <span id="product-availability"></span>
+            </div>
+          </div>
+
+          <!-- Price -->
+
+          <p id="product-price" class="product-price"></p>
+
+          <!-- Description -->
+
+          <p id="product-short-description" class="product-summary"></p>
+
+          <!-- Product highlights -->
+
+          <div id="product-highlights" class="product-highlights"></div>
+        </div>
+
+        <!-- ===============================================
+             PURCHASE PANEL
+        ================================================ -->
+
+        <aside class="product-purchase-card">
+          <div class="purchase-card-heading">
+            <span>Purchase options</span>
+
+            <span class="purchase-local-badge">
+              <i data-lucide="map-pin"></i>
+              Local
+            </span>
+          </div>
+
+          <!-- Variants -->
+
+          <div id="product-variants-section" class="product-variants-section">
+            <h2>Choose variant</h2>
+
+            <div id="product-variants" class="product-variant-options"></div>
+          </div>
+
+          <!-- Quantity -->
+
+          <div class="product-quantity-section">
+            <span class="purchase-field-label"> Quantity </span>
+
+            <div class="quantity-row">
+              <div class="quantity-control">
+                <button
+                  type="button"
+                  data-action="decrease-quantity"
+                  aria-label="Decrease quantity"
+                >
+                  <i data-lucide="minus"></i>
+                </button>
+
+                <span id="product-quantity"> 1 </span>
+
+                <button
+                  type="button"
+                  data-action="increase-quantity"
+                  aria-label="Increase quantity"
+                >
+                  <i data-lucide="plus"></i>
+                </button>
+              </div>
+
+              <span id="product-stock-count" class="product-stock-count"></span>
+            </div>
+          </div>
+
+          <!-- Main actions -->
+
+          <div class="product-purchase-actions">
+            <button
+              type="button"
+              class="product-add-cart-button"
+              data-action="add-to-cart"
+            >
+              <i data-lucide="shopping-cart"></i>
+
+              <span>Add to Cart</span>
+            </button>
+
+            <button
+              type="button"
+              class="product-save-button"
+              data-action="save-product"
+            >
+              <i data-lucide="heart"></i>
+
+              <span>Save Item</span>
+            </button>
+          </div>
+
+          <!-- Local fulfilment -->
+
+          <div class="local-fulfillment">
+            <div class="fulfillment-heading">
+              <i data-lucide="navigation"></i>
+
+              <span>Get it locally</span>
+            </div>
+
+            <div id="product-delivery-option" class="fulfillment-option">
+              <span class="fulfillment-icon">
+                <i data-lucide="bike"></i>
+              </span>
+
+              <div>
+                <strong>Local delivery</strong>
+
+                <span> Delivery available from this business </span>
+              </div>
+            </div>
+
+            <div id="product-pickup-option" class="fulfillment-option">
+              <span class="fulfillment-icon">
+                <i data-lucide="store"></i>
+              </span>
+
+              <div>
+                <strong>Store pickup</strong>
+
+                <span> Collect directly from the seller </span>
+              </div>
+            </div>
+          </div>
+        </aside>
+      </section>
+
+      <!-- ===================================================
+           LOCAL SELLER
+      ==================================================== -->
+
+      <section class="product-seller-section">
+        <div class="product-section-heading">
+          <div>
+            <span class="product-section-eyebrow"> Local seller </span>
+
+            <h2>Available from a business near you</h2>
+          </div>
+
+          <i data-lucide="store"></i>
+        </div>
+
+        <article class="product-seller-card">
+          <img
+            id="product-business-image"
+            class="product-seller-image"
+            src=""
+            alt=""
+          />
+
+          <div class="product-seller-content">
+            <div class="product-seller-title">
+              <h3 id="product-business-name"></h3>
+
+              <span
+                id="product-business-status"
+                class="product-seller-status"
+              ></span>
+            </div>
+
+            <div class="product-seller-meta">
+              <span class="product-seller-rating">
+                <i data-lucide="star"></i>
+
+                <span id="product-business-rating"></span>
+
+                <span id="product-business-reviews"></span>
+              </span>
+
+              <span class="product-seller-location">
+                <i data-lucide="map-pin"></i>
+
+                <span id="product-business-location"></span>
+
+                <span>•</span>
+
+                <span id="product-business-distance"></span>
+              </span>
+            </div>
+
+            <p id="product-business-description"></p>
+          </div>
+
+          <button
+            type="button"
+            class="product-view-business-button"
+            data-action="view-business"
+          >
+            <span>View Business</span>
+
+            <i data-lucide="arrow-right"></i>
+          </button>
+        </article>
+      </section>
+
+      <!-- ===================================================
+           PRODUCT INFORMATION / REVIEWS
+      ==================================================== -->
+
+      <section class="product-content-section">
+        <nav class="product-content-tabs" aria-label="Product information">
+          <button
+            type="button"
+            class="product-content-tab active"
+            data-product-tab="description"
+          >
+            Description
+          </button>
+
+          <button
+            type="button"
+            class="product-content-tab"
+            data-product-tab="reviews"
+          >
+            Reviews
+          </button>
+        </nav>
+
+        <!-- Description -->
+
+        <div id="product-description-panel" class="product-content-panel">
+          <div class="product-content-heading">
+            <h2>About this product</h2>
+
+            <p>Product information provided by the local seller.</p>
+          </div>
+
+          <p id="product-full-description" class="product-full-description"></p>
+
+          <div id="product-details-list" class="product-details-list"></div>
+        </div>
+
+        <!-- Reviews -->
+
+        <div id="product-reviews-panel" class="product-content-panel" hidden>
+          <div class="product-reviews-heading">
+            <div>
+              <h2>Customer Reviews</h2>
+
+              <p>What customers say about this product.</p>
+            </div>
+
+            <div class="product-review-summary">
+              <strong id="product-average-rating"></strong>
+
+              <span id="product-review-count"></span>
+            </div>
+          </div>
+
+          <div id="product-reviews-list"></div>
+        </div>
+      </section>
+    </main>
+
+<!-- =====================================================
+     SEARCH OVERLAY
+====================================================== -->
+
+<section
+  class="search-overlay"
+  id="search-overlay"
+  aria-hidden="true"
+  aria-label="Search LocalLink"
+>
+  <div class="search-overlay-content">
+
+    <!-- =================================================
+         SEARCH HEADER
+    ================================================== -->
+
+    <div class="search-overlay-header">
+
+      <div class="search-overlay-heading">
+        <div>
+          <span class="search-eyebrow">
+            LocalLink Search
+          </span>
+
+          <h2>What are you looking for?</h2>
+
+          <p>
+            Search products from local stores or find
+            services from local professionals.
+          </p>
+        </div>
+
+        <button
+          type="button"
+          id="close-search"
+          class="close-search-button"
+          aria-label="Close search"
+        >
+          <i data-lucide="x"></i>
+        </button>
+      </div>
+
+
+      <!-- SEARCH INPUT -->
+
+      <form
+        id="overlay-search-form"
+        class="overlay-search-form"
+      >
+        <div class="overlay-search-field">
+
+          <span class="overlay-search-icon">
+            <i data-lucide="search"></i>
+          </span>
+
+          <input
+            type="search"
+            id="overlay-search-input"
+            placeholder="Try rice, phone charger, plumber..."
+            autocomplete="off"
+            aria-label="Search LocalLink"
+          />
+
+          <button
+            type="submit"
+            class="overlay-search-button"
+          >
+            <span>Search</span>
+
+            <i data-lucide="arrow-right"></i>
+          </button>
+
+        </div>
+      </form>
+
+    </div>
+
+
+    <!-- =================================================
+         SEARCH TYPE
+    ================================================== -->
+
+    <div class="search-type-area">
+
+      <div class="search-type-heading">
+        <span>Search in</span>
+
+        <p>
+          Choose the type of result you want to find.
+        </p>
+      </div>
+
+
+      <div
+        class="search-type-selector"
+        id="search-type-toggle"
+      >
+
+        <!-- PRODUCTS -->
+
+        <button
+          type="button"
+          id="product-search-button"
+          value="product"
+          class="active"
+          aria-pressed="true"
+        >
+          <span class="search-type-icon">
+            <i data-lucide="shopping-bag"></i>
+          </span>
+
+          <span class="search-type-copy">
+            <strong>Products</strong>
+
+            <small>
+              Items from local stores
+            </small>
+          </span>
+
+          <span class="search-type-selected">
+            <i data-lucide="check"></i>
+          </span>
+        </button>
+
+
+        <!-- SERVICES -->
+
+        <button
+          type="button"
+          id="service-search-button"
+          value="service"
+          aria-pressed="false"
+        >
+          <span class="search-type-icon">
+            <i data-lucide="briefcase-business"></i>
+          </span>
+
+          <span class="search-type-copy">
+            <strong>Services</strong>
+
+            <small>
+              Local professionals and services
+            </small>
+          </span>
+
+          <span class="search-type-selected">
+            <i data-lucide="check"></i>
+          </span>
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <!-- =================================================
+         RECENT SEARCHES
+
+         search.js inserts the recent-search section here
+         dynamically.
+    ================================================== -->
+
+
+    <!-- =================================================
+         RESULTS
+    ================================================== -->
+
+    <div
+      id="search-results"
+      class="search-results"
+      aria-live="polite"
+    ></div>
+
+  </div>
+</section>
+
+    <!-- =====================================================
+         MOBILE BOTTOM NAVIGATION
+    ====================================================== -->
+
+    <nav class="mobile-bottom-navigation">
+      <a href="./index.html">
+        <i data-lucide="house"></i>
+        <span>Home</span>
+      </a>
+
+      <a href="./category.html">
+        <i data-lucide="compass"></i>
+        <span>Explore</span>
+      </a>
+
+      <a href="./orders.html">
+        <i data-lucide="package"></i>
+        <span>Orders</span>
+      </a>
+
+      <a href="./saved.html">
+        <i data-lucide="heart"></i>
+        <span>Saved</span>
+      </a>
+
+      <a href="./profile.html">
+        <i data-lucide="user"></i>
+        <span>Profile</span>
+      </a>
+    </nav>
+
+    <!-- =====================================================
+         SCRIPTS
+    ====================================================== -->
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script type="module" src="./js/auth-guard.js"></script>
+    <script type="module" src="./js/product-details.js"></script>
+  </body>
+</html>

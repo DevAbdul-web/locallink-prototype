@@ -1,0 +1,819 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Checkout | LocalLink</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="./css/style.css" />
+    <!-- PAGE -->
+    <link rel="stylesheet" href="./css/checkout.css" />
+  </head>
+
+  <body>
+    <!-- =====================================================
+         GLOBAL HEADER
+    ====================================================== -->
+
+    <header class="app-header">
+      <!-- Brand -->
+      <a href="index.html" class="brand brand-link">
+        <span class="brand-icon">
+          <i data-lucide="map-pin"></i>
+        </span>
+
+        <span class="brand-name">LocalLink</span>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav class="desktop-navigation" aria-label="Main navigation">
+        <a href="index.html">
+          <i data-lucide="house"></i>
+          <span>Home</span>
+        </a>
+
+        <a href="category.html">
+          <i data-lucide="compass"></i>
+          <span>Explore</span>
+        </a>
+
+        <button
+          type="button"
+          class="desktop-search-trigger search-trigger"
+          aria-label="Open search"
+        >
+          <i data-lucide="search"></i>
+          <span>Search</span>
+        </button>
+      </nav>
+
+      <div class="header-right">
+        <div class="header-location">
+          <i data-lucide="map-pin"></i>
+          <span>Ilorin, Kwara</span>
+        </div>
+
+        <!-- CART -->
+        <a href="./cart.html" class="header-cart-button" aria-label="Cart">
+          <i data-lucide="shopping-cart"></i>
+
+          <span class="cart-count-badge" data-cart-count hidden> 0 </span>
+        </a>
+
+        <nav class="header-actions">
+          <a href="./orders.html" class="header-action">
+            <i data-lucide="package"></i>
+            <span class="header-action-label">Orders</span>
+          </a>
+
+          <a href="./saved.html" class="header-action">
+            <i data-lucide="heart"></i>
+            <span class="header-action-label">Saved</span>
+          </a>
+
+          <a href="./profile.html" class="profile-button" aria-label="Profile">
+            <i data-lucide="user"></i>
+          </a>
+        </nav>
+
+        <button
+          type="button"
+          class="mobile-search-trigger"
+          data-action="open-search"
+          aria-label="Search"
+        >
+          <i data-lucide="search"></i>
+        </button>
+      </div>
+    </header>
+    <!-- =====================================================
+         CHECKOUT
+    ====================================================== -->
+
+    <main class="checkout-main">
+      <!-- ===================================================
+           PAGE HEADING
+      ==================================================== -->
+
+      <section class="checkout-page-heading">
+        <div>
+          <span class="checkout-eyebrow"> Almost there </span>
+
+          <h1>Checkout</h1>
+
+          <p>
+            Confirm how you want to receive your items and review your order
+            before placing it.
+          </p>
+        </div>
+
+        <a href="./cart.html" class="checkout-back-link">
+          <i data-lucide="arrow-left"></i>
+          <span>Back to cart</span>
+        </a>
+      </section>
+
+      <!-- ===================================================
+           CHECKOUT CONTENT
+      ==================================================== -->
+
+      <section class="checkout-layout" id="checkout-layout" hidden>
+        <!-- =================================================
+             LEFT COLUMN
+        ================================================== -->
+
+        <div class="checkout-content">
+          <!-- ===============================================
+               CONTACT INFORMATION
+          ================================================ -->
+
+          <section class="checkout-card">
+            <div class="checkout-section-heading">
+              <div class="checkout-section-number">1</div>
+
+              <div>
+                <span>Your details</span>
+
+                <h2>Contact information</h2>
+
+                <p>
+                  We'll use your saved profile details for updates about your
+                  order.
+                </p>
+              </div>
+            </div>
+
+            <!-- Customer information comes from the
+                 LocalLink profile rather than being
+                 entered again during every checkout. -->
+
+            <div class="checkout-profile-details">
+              <div class="checkout-profile-detail">
+                <span class="checkout-profile-detail-icon">
+                  <i data-lucide="user"></i>
+                </span>
+
+                <div>
+                  <span>Full name</span>
+
+                  <strong id="checkout-customer-name"> Loading... </strong>
+                </div>
+              </div>
+
+              <div class="checkout-profile-detail">
+                <span class="checkout-profile-detail-icon">
+                  <i data-lucide="phone"></i>
+                </span>
+
+                <div>
+                  <span>Phone number</span>
+
+                  <strong id="checkout-customer-phone"> Loading... </strong>
+                </div>
+              </div>
+
+              <a href="./profile.html" class="checkout-profile-edit">
+                <i data-lucide="pencil"></i>
+                <span>Edit in profile</span>
+              </a>
+            </div>
+          </section>
+
+          <!-- ===============================================
+               FULFILLMENT BY BUSINESS
+          ================================================ -->
+
+          <section class="checkout-card">
+            <div class="checkout-section-heading">
+              <div class="checkout-section-number">2</div>
+
+              <div>
+                <span>Receive your items</span>
+
+                <h2>Delivery or pickup</h2>
+
+                <p>Choose how you want to receive items from each business.</p>
+              </div>
+            </div>
+
+            <div
+              class="checkout-fulfillment-list"
+              id="checkout-fulfillment-list"
+            ></div>
+          </section>
+
+          <!-- ===============================================
+               DELIVERY ADDRESS
+          ================================================ -->
+
+          <section class="checkout-card" id="checkout-address-section" hidden>
+            <div class="checkout-section-heading">
+              <div class="checkout-section-icon">
+                <i data-lucide="map-pin"></i>
+              </div>
+
+              <div>
+                <span>Delivery location</span>
+
+                <h2>Where should we deliver?</h2>
+
+                <p>Your saved delivery address will be used for this order.</p>
+              </div>
+            </div>
+
+            <!-- ===========================================
+                 SAVED ADDRESS
+
+                 Displayed when the customer already has
+                 one or more saved addresses.
+            ============================================ -->
+
+            <div
+              class="checkout-saved-address"
+              id="checkout-saved-address"
+              hidden
+            >
+              <div class="checkout-saved-address-icon">
+                <i data-lucide="map-pin"></i>
+              </div>
+
+              <div class="checkout-saved-address-content">
+                <div class="checkout-saved-address-heading">
+                  <strong id="checkout-address-label"> Loading... </strong>
+
+                  <span
+                    class="checkout-address-default-badge"
+                    id="checkout-address-default-badge"
+                    hidden
+                  >
+                    Default
+                  </span>
+                </div>
+
+                <p id="checkout-address-value">Loading your saved address...</p>
+
+                <span
+                  class="checkout-address-landmark"
+                  id="checkout-address-landmark"
+                  hidden
+                ></span>
+              </div>
+
+              <button
+                type="button"
+                class="checkout-change-address"
+                data-action="change-address"
+              >
+                Change
+              </button>
+            </div>
+
+            <!-- ===========================================
+                 NO SAVED ADDRESS
+
+                 Displayed when the customer has not yet
+                 added an address to their profile.
+            ============================================ -->
+
+            <div class="checkout-no-address" id="checkout-no-address" hidden>
+              <div class="checkout-no-address-icon">
+                <i data-lucide="map-pin-off"></i>
+              </div>
+
+              <div>
+                <strong> No delivery address saved </strong>
+
+                <p>
+                  Add a delivery address to your profile before choosing
+                  delivery.
+                </p>
+              </div>
+
+              <a href="./profile.html"> Add address </a>
+            </div>
+
+            <!-- LOCATION PRIVACY -->
+
+            <div class="checkout-location-privacy">
+              <i data-lucide="shield-check"></i>
+
+              <div>
+                <strong> Your location stays private </strong>
+
+                <p>
+                  Your delivery address is used only to arrange your order and
+                  is shared only when needed to complete the delivery.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- ===============================================
+               PAYMENT
+          ================================================ -->
+
+          <section class="checkout-card">
+            <div class="checkout-section-heading">
+              <div class="checkout-section-number">3</div>
+
+              <div>
+                <span>Secure payment</span>
+
+                <h2>Pay with LocalLink</h2>
+
+                <p>
+                  Pay before your order is sent to the businesses. Your payment
+                  stays protected until each order is successfully completed.
+                </p>
+              </div>
+            </div>
+
+            <!-- PAYMENT PROTECTION -->
+
+            <div class="checkout-payment-protection">
+              <div class="checkout-payment-protection-icon">
+                <i data-lucide="shield-check"></i>
+              </div>
+
+              <div>
+                <strong> Your payment is protected </strong>
+
+                <p>
+                  LocalLink holds your payment while your order is being
+                  fulfilled. Each business receives its payment only after its
+                  part of the order has been successfully completed.
+                </p>
+              </div>
+            </div>
+
+            <!-- PAYMENT METHODS -->
+
+            <div class="checkout-payment-options">
+              <label class="checkout-payment-option active">
+                <input
+                  type="radio"
+                  name="payment-method"
+                  value="card"
+                  checked
+                />
+
+                <span class="checkout-payment-icon">
+                  <i data-lucide="credit-card"></i>
+                </span>
+
+                <span class="checkout-payment-content">
+                  <strong> Debit or credit card </strong>
+
+                  <small> Pay securely with your card. </small>
+                </span>
+
+                <span class="checkout-radio-indicator"></span>
+              </label>
+
+              <label class="checkout-payment-option">
+                <input
+                  type="radio"
+                  name="payment-method"
+                  value="bank-transfer"
+                />
+
+                <span class="checkout-payment-icon">
+                  <i data-lucide="landmark"></i>
+                </span>
+
+                <span class="checkout-payment-content">
+                  <strong> Bank transfer </strong>
+
+                  <small> Pay directly from your bank account. </small>
+                </span>
+
+                <span class="checkout-radio-indicator"></span>
+              </label>
+
+              <div class="checkout-payment-option disabled">
+                <span class="checkout-payment-icon">
+                  <i data-lucide="wallet-cards"></i>
+                </span>
+
+                <span class="checkout-payment-content">
+                  <strong> LocalLink Wallet </strong>
+
+                  <small> Pay instantly from your LocalLink balance. </small>
+                </span>
+
+                <span class="checkout-coming-soon"> Coming soon </span>
+              </div>
+            </div>
+
+            <!-- PROTOTYPE PAYMENT NOTICE -->
+
+            <div class="checkout-payment-demo-note">
+              <i data-lucide="info"></i>
+
+              <p>
+                Payments are simulated in this prototype. No real money will be
+                charged.
+              </p>
+            </div>
+          </section>
+
+          <!-- ===============================================
+               OPTIONAL NOTE
+          ================================================ -->
+
+          <section class="checkout-card">
+            <div class="checkout-section-heading compact">
+              <div class="checkout-section-icon">
+                <i data-lucide="message-square-text"></i>
+              </div>
+
+              <div>
+                <span>Optional</span>
+
+                <h2>Order note</h2>
+
+                <p>
+                  Add any useful information for the businesses or delivery.
+                </p>
+              </div>
+            </div>
+
+            <label class="checkout-field checkout-field-full">
+              <textarea
+                id="checkout-note"
+                rows="3"
+                maxlength="300"
+                placeholder="Anything the seller or rider should know?"
+              ></textarea>
+
+              <span class="checkout-character-count">
+                <span id="checkout-note-count"> 0 </span>/300
+              </span>
+            </label>
+          </section>
+        </div>
+
+        <!-- =================================================
+             ORDER SUMMARY
+        ================================================== -->
+
+        <aside class="checkout-summary">
+          <div class="checkout-summary-heading">
+            <div>
+              <span>Your order</span>
+
+              <h2>Order summary</h2>
+            </div>
+
+            <a href="./cart.html"> Edit cart </a>
+          </div>
+
+          <div
+            class="checkout-summary-businesses"
+            id="checkout-summary-businesses"
+          ></div>
+
+          <!-- ===============================================
+               TOTALS
+          ================================================ -->
+
+          <div class="checkout-summary-totals">
+            <div class="checkout-summary-row">
+              <span>Items subtotal</span>
+
+              <strong id="checkout-subtotal"> ₦0 </strong>
+            </div>
+
+            <div class="checkout-summary-row">
+              <span>Delivery</span>
+
+              <strong id="checkout-delivery-fee"> Calculating... </strong>
+            </div>
+
+            <!-- CUSTOMER-FACING LOCALLINK SERVICE FEE -->
+
+            <div class="checkout-summary-row">
+              <span> LocalLink service fee </span>
+
+              <strong id="checkout-service-fee"> ₦0 </strong>
+            </div>
+
+            <div class="checkout-summary-divider"></div>
+
+            <div class="checkout-summary-total">
+              <span>Total</span>
+
+              <strong id="checkout-total"> ₦0 </strong>
+            </div>
+          </div>
+
+          <!-- ===============================================
+               PLACE ORDER
+          ================================================ -->
+
+          <button
+            type="button"
+            class="checkout-place-order-button"
+            id="place-order-button"
+          >
+            <span id="checkout-payment-button-label"> Review & Pay </span>
+
+            <i data-lucide="lock-keyhole"></i>
+          </button>
+
+          <div class="checkout-order-safety">
+            <i data-lucide="shield-check"></i>
+
+            <p>
+              Your payment is protected by LocalLink while your order is being
+              fulfilled. Payment for each seller is released only after
+              successful completion.
+            </p>
+          </div>
+        </aside>
+      </section>
+
+      <!-- ===================================================
+           EMPTY CHECKOUT
+
+           Protects against opening checkout directly
+           while the cart is empty.
+      ==================================================== -->
+
+      <section class="checkout-empty-state" id="checkout-empty-state" hidden>
+        <div class="checkout-empty-icon">
+          <i data-lucide="shopping-cart"></i>
+        </div>
+
+        <h2>Nothing to checkout</h2>
+
+        <p>
+          Your cart is empty. Add products from nearby businesses before
+          continuing to checkout.
+        </p>
+
+        <a href="./category.html" class="checkout-empty-button">
+          <span>Explore nearby</span>
+
+          <i data-lucide="arrow-right"></i>
+        </a>
+      </section>
+    </main>
+
+    <!-- =====================================================
+         ADDRESS SELECTOR MODAL
+
+         This will allow the customer to choose another
+         saved address for this order without changing
+         their default profile address.
+    ====================================================== -->
+
+    <div
+      class="checkout-address-modal-overlay"
+      id="checkout-address-modal"
+      aria-hidden="true"
+      hidden
+    >
+      <section
+        class="checkout-address-modal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="checkout-address-modal-title"
+      >
+        <div class="checkout-address-modal-heading">
+          <div>
+            <span>Delivery location</span>
+
+            <h2 id="checkout-address-modal-title">Choose delivery address</h2>
+
+            <p>Select a saved address for this order.</p>
+          </div>
+
+          <button
+            type="button"
+            class="checkout-address-modal-close"
+            data-action="close-address-selector"
+            aria-label="Close"
+          >
+            <i data-lucide="x"></i>
+          </button>
+        </div>
+
+        <!-- Filled dynamically from profile.addresses -->
+
+        <div
+          class="checkout-address-options"
+          id="checkout-address-options"
+        ></div>
+
+        <div class="checkout-address-modal-footer">
+          <a href="./profile.html" class="checkout-manage-addresses">
+            <i data-lucide="settings-2"></i>
+            <span>Manage addresses</span>
+          </a>
+
+          <button
+            type="button"
+            class="checkout-use-address-button"
+            id="checkout-use-address-button"
+          >
+            Use this address
+          </button>
+        </div>
+      </section>
+    </div>
+
+    <!-- =====================================================
+     SEARCH OVERLAY
+====================================================== -->
+
+    <section
+      class="search-overlay"
+      id="search-overlay"
+      aria-hidden="true"
+      aria-label="Search LocalLink"
+    >
+      <div class="search-overlay-content">
+        <!-- =================================================
+         SEARCH HEADER
+    ================================================== -->
+
+        <div class="search-overlay-header">
+          <div class="search-overlay-heading">
+            <div>
+              <span class="search-eyebrow"> LocalLink Search </span>
+
+              <h2>What are you looking for?</h2>
+
+              <p>
+                Search products from local stores or find services from local
+                professionals.
+              </p>
+            </div>
+
+            <button
+              type="button"
+              id="close-search"
+              class="close-search-button"
+              aria-label="Close search"
+            >
+              <i data-lucide="x"></i>
+            </button>
+          </div>
+
+          <!-- SEARCH INPUT -->
+
+          <form id="overlay-search-form" class="overlay-search-form">
+            <div class="overlay-search-field">
+              <span class="overlay-search-icon">
+                <i data-lucide="search"></i>
+              </span>
+
+              <input
+                type="search"
+                id="overlay-search-input"
+                placeholder="Try rice, phone charger, plumber..."
+                autocomplete="off"
+                aria-label="Search LocalLink"
+              />
+
+              <button type="submit" class="overlay-search-button">
+                <span>Search</span>
+
+                <i data-lucide="arrow-right"></i>
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <!-- =================================================
+         SEARCH TYPE
+    ================================================== -->
+
+        <div class="search-type-area">
+          <div class="search-type-heading">
+            <span>Search in</span>
+
+            <p>Choose the type of result you want to find.</p>
+          </div>
+
+          <div class="search-type-selector" id="search-type-toggle">
+            <!-- PRODUCTS -->
+
+            <button
+              type="button"
+              id="product-search-button"
+              value="product"
+              class="active"
+              aria-pressed="true"
+            >
+              <span class="search-type-icon">
+                <i data-lucide="shopping-bag"></i>
+              </span>
+
+              <span class="search-type-copy">
+                <strong>Products</strong>
+
+                <small> Items from local stores </small>
+              </span>
+
+              <span class="search-type-selected">
+                <i data-lucide="check"></i>
+              </span>
+            </button>
+
+            <!-- SERVICES -->
+
+            <button
+              type="button"
+              id="service-search-button"
+              value="service"
+              aria-pressed="false"
+            >
+              <span class="search-type-icon">
+                <i data-lucide="briefcase-business"></i>
+              </span>
+
+              <span class="search-type-copy">
+                <strong>Services</strong>
+
+                <small> Local professionals and services </small>
+              </span>
+
+              <span class="search-type-selected">
+                <i data-lucide="check"></i>
+              </span>
+            </button>
+          </div>
+        </div>
+
+        <!-- =================================================
+         RECENT SEARCHES
+
+         search.js inserts the recent-search section here
+         dynamically.
+    ================================================== -->
+
+        <!-- =================================================
+         RESULTS
+    ================================================== -->
+
+        <div
+          id="search-results"
+          class="search-results"
+          aria-live="polite"
+        ></div>
+      </div>
+    </section>
+
+    <!-- =====================================================
+         MOBILE NAVIGATION
+    ====================================================== -->
+
+    <nav class="mobile-bottom-navigation" aria-label="Mobile navigation">
+      <a href="./index.html">
+        <i data-lucide="house"></i>
+        <span>Home</span>
+      </a>
+
+      <a href="./category.html">
+        <i data-lucide="compass"></i>
+        <span>Explore</span>
+      </a>
+
+      <a href="./orders.html">
+        <i data-lucide="package"></i>
+        <span>Orders</span>
+      </a>
+
+      <a href="./saved.html">
+        <i data-lucide="heart"></i>
+        <span>Saved</span>
+      </a>
+
+      <a href="./profile.html">
+        <i data-lucide="user"></i>
+        <span>Profile</span>
+      </a>
+    </nav>
+
+    <!-- =====================================================
+         SCRIPTS
+    ====================================================== -->
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script type="module" src="./js/auth-guard.js"></script>
+
+    <script type="module" src="./js/checkout.js"></script>
+  </body>
+</html>

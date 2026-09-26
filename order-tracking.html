@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Track Order | LocalLink</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="./css/style.css" />
+    <!-- PAGE -->
+    <link rel="stylesheet" href="./css/product-tracking.css" />
+  </head>
+
+  <body>
+    <main class="tracking-page">
+      <header class="tracking-header">
+        <a href="./orders.html" aria-label="Back to orders">
+          <i data-lucide="arrow-left"></i>
+        </a>
+
+        <div>
+          <strong>Your order</strong>
+
+          <span id="tracking-order-id"> — </span>
+        </div>
+
+        <a href="./index.html"> LocalLink </a>
+      </header>
+
+      <!-- Dynamic live experience -->
+
+      <section id="tracking-live-area" class="tracking-live-area"></section>
+
+      <!-- Order information -->
+
+      <section
+        id="tracking-order-details"
+        class="tracking-order-details"
+      ></section>
+
+      <!-- Missing order -->
+
+      <section id="tracking-not-found" class="tracking-not-found" hidden>
+        <i data-lucide="package-x"></i>
+
+        <h1>Order not found</h1>
+
+        <p>We couldn't find this order.</p>
+
+        <a href="./orders.html"> Back to orders </a>
+      </section>
+    </main>
+
+    <!-- RECEIVE CONFIRMATION -->
+
+    <div class="tracking-confirm-overlay" id="tracking-confirm-overlay" hidden>
+      <section class="tracking-confirm-modal">
+        <span>
+          <i data-lucide="package-check"></i>
+        </span>
+
+        <h2>Confirm receipt</h2>
+
+        <p>
+          Please confirm only after the product has actually been handed to you.
+        </p>
+
+        <div>
+          <button type="button" data-action="cancel-receipt">Not yet</button>
+
+          <button type="button" data-action="complete-order">
+            Yes, I received it
+          </button>
+        </div>
+      </section>
+    </div>
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script type="module" src="./js/order-tracking.js"></script>
+  </body>
+</html>
