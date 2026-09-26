@@ -31,6 +31,52 @@ The broader vision is to create a location-aware marketplace connecting four maj
 
 The current prototype focuses primarily on demonstrating the **customer experience**.
 
+## Screenshots
+
+### Marketplace Home
+
+The main LocalLink interface provides a starting point for discovering nearby businesses, products, and services.
+
+![LocalLink marketplace home](assets/images/screenshots/home.png)
+
+### Product Discovery
+
+Users can open individual products to view product information, pricing, availability, variants, and the business selling the product.
+
+![LocalLink product details](assets/images/screenshots/product-details.png)
+
+### Business Profile
+
+Businesses have dedicated profiles where customers can view business information and explore the products offered by that seller.
+
+![LocalLink business profile](assets/images/screenshots/business-profile.png)
+
+### Cart and Checkout
+
+Products can be added to a persistent shopping cart before the customer proceeds through the simulated checkout flow.
+
+![LocalLink shopping cart](assets/images/screenshots/cart.png)
+
+![LocalLink checkout](assets/images/screenshots/checkout.png)
+
+### Order Tracking
+
+After checkout, the prototype simulates the progression of an order through different fulfilment states.
+
+![LocalLink order tracking](assets/images/screenshots/order-tracking.png)
+
+### Service Requests
+
+LocalLink also supports service-based transactions. Customers can submit a request based on the selected service and its fulfilment options.
+
+![LocalLink service request](assets/images/screenshots/service-request.png)
+
+### Service Tracking
+
+Service requests have their own simulated lifecycle, including status progression and OTP-based completion confirmation.
+
+![LocalLink service tracking](assets/images/screenshots/service-tracking.png)
+
 ## Current Prototype Features
 
 ### Local Discovery
