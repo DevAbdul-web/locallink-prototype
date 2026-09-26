@@ -25,8 +25,7 @@
     ====================================================== -->
 
     <header class="app-header">
-      <!-- Brand -->
-      <a href="index.html" class="brand brand-link">
+      <a href="./index.html" class="brand">
         <span class="brand-icon">
           <i data-lucide="map-pin"></i>
         </span>
@@ -34,23 +33,18 @@
         <span class="brand-name">LocalLink</span>
       </a>
 
-      <!-- Desktop Navigation -->
-      <nav class="desktop-navigation" aria-label="Main navigation">
-        <a href="index.html">
+      <nav class="desktop-navigation">
+        <a href="./index.html">
           <i data-lucide="house"></i>
           <span>Home</span>
         </a>
 
-        <a href="category.html">
+        <a href="./category.html">
           <i data-lucide="compass"></i>
           <span>Explore</span>
         </a>
 
-        <button
-          type="button"
-          class="desktop-search-trigger search-trigger"
-          aria-label="Open search"
-        >
+        <button type="button" data-action="open-search">
           <i data-lucide="search"></i>
           <span>Search</span>
         </button>
@@ -63,7 +57,11 @@
         </div>
 
         <!-- CART -->
-        <a href="./cart.html" class="header-cart-button" aria-label="Cart">
+        <a
+          href="./cart.html"
+          class="active header-cart-button"
+          aria-label="Cart"
+        >
           <i data-lucide="shopping-cart"></i>
 
           <span class="cart-count-badge" data-cart-count hidden> 0 </span>

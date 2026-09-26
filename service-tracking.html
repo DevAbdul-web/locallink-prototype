@@ -25,7 +25,7 @@
           <i data-lucide="map-pin"></i>
         </span>
 
-        <span class="brand-name"> LocalLink </span>
+        <span class="brand-name">LocalLink</span>
       </a>
 
       <nav class="desktop-navigation">
@@ -51,7 +51,12 @@
           <span>Ilorin, Kwara</span>
         </div>
 
-        <a href="./cart.html" class="header-cart-button" aria-label="Cart">
+        <!-- CART -->
+        <a
+          href="./cart.html"
+          class="active header-cart-button"
+          aria-label="Cart"
+        >
           <i data-lucide="shopping-cart"></i>
 
           <span class="cart-count-badge" data-cart-count hidden> 0 </span>
@@ -60,12 +65,12 @@
         <nav class="header-actions">
           <a href="./orders.html" class="header-action">
             <i data-lucide="package"></i>
-            <span class="header-action-label"> Orders </span>
+            <span class="header-action-label">Orders</span>
           </a>
 
           <a href="./saved.html" class="header-action">
             <i data-lucide="heart"></i>
-            <span class="header-action-label"> Saved </span>
+            <span class="header-action-label">Saved</span>
           </a>
 
           <a href="./profile.html" class="profile-button" aria-label="Profile">
@@ -475,181 +480,148 @@
       </a>
     </nav>
 
-<!-- =====================================================
+    <!-- =====================================================
      SEARCH OVERLAY
 ====================================================== -->
 
-<section
-  class="search-overlay"
-  id="search-overlay"
-  aria-hidden="true"
-  aria-label="Search LocalLink"
->
-  <div class="search-overlay-content">
-
-    <!-- =================================================
+    <section
+      class="search-overlay"
+      id="search-overlay"
+      aria-hidden="true"
+      aria-label="Search LocalLink"
+    >
+      <div class="search-overlay-content">
+        <!-- =================================================
          SEARCH HEADER
     ================================================== -->
 
-    <div class="search-overlay-header">
+        <div class="search-overlay-header">
+          <div class="search-overlay-heading">
+            <div>
+              <span class="search-eyebrow"> LocalLink Search </span>
 
-      <div class="search-overlay-heading">
-        <div>
-          <span class="search-eyebrow">
-            LocalLink Search
-          </span>
+              <h2>What are you looking for?</h2>
 
-          <h2>What are you looking for?</h2>
+              <p>
+                Search products from local stores or find services from local
+                professionals.
+              </p>
+            </div>
 
-          <p>
-            Search products from local stores or find
-            services from local professionals.
-          </p>
+            <button
+              type="button"
+              id="close-search"
+              class="close-search-button"
+              aria-label="Close search"
+            >
+              <i data-lucide="x"></i>
+            </button>
+          </div>
+
+          <!-- SEARCH INPUT -->
+
+          <form id="overlay-search-form" class="overlay-search-form">
+            <div class="overlay-search-field">
+              <span class="overlay-search-icon">
+                <i data-lucide="search"></i>
+              </span>
+
+              <input
+                type="search"
+                id="overlay-search-input"
+                placeholder="Try rice, phone charger, plumber..."
+                autocomplete="off"
+                aria-label="Search LocalLink"
+              />
+
+              <button type="submit" class="overlay-search-button">
+                <span>Search</span>
+
+                <i data-lucide="arrow-right"></i>
+              </button>
+            </div>
+          </form>
         </div>
 
-        <button
-          type="button"
-          id="close-search"
-          class="close-search-button"
-          aria-label="Close search"
-        >
-          <i data-lucide="x"></i>
-        </button>
-      </div>
-
-
-      <!-- SEARCH INPUT -->
-
-      <form
-        id="overlay-search-form"
-        class="overlay-search-form"
-      >
-        <div class="overlay-search-field">
-
-          <span class="overlay-search-icon">
-            <i data-lucide="search"></i>
-          </span>
-
-          <input
-            type="search"
-            id="overlay-search-input"
-            placeholder="Try rice, phone charger, plumber..."
-            autocomplete="off"
-            aria-label="Search LocalLink"
-          />
-
-          <button
-            type="submit"
-            class="overlay-search-button"
-          >
-            <span>Search</span>
-
-            <i data-lucide="arrow-right"></i>
-          </button>
-
-        </div>
-      </form>
-
-    </div>
-
-
-    <!-- =================================================
+        <!-- =================================================
          SEARCH TYPE
     ================================================== -->
 
-    <div class="search-type-area">
+        <div class="search-type-area">
+          <div class="search-type-heading">
+            <span>Search in</span>
 
-      <div class="search-type-heading">
-        <span>Search in</span>
+            <p>Choose the type of result you want to find.</p>
+          </div>
 
-        <p>
-          Choose the type of result you want to find.
-        </p>
-      </div>
+          <div class="search-type-selector" id="search-type-toggle">
+            <!-- PRODUCTS -->
 
+            <button
+              type="button"
+              id="product-search-button"
+              value="product"
+              class="active"
+              aria-pressed="true"
+            >
+              <span class="search-type-icon">
+                <i data-lucide="shopping-bag"></i>
+              </span>
 
-      <div
-        class="search-type-selector"
-        id="search-type-toggle"
-      >
+              <span class="search-type-copy">
+                <strong>Products</strong>
 
-        <!-- PRODUCTS -->
+                <small> Items from local stores </small>
+              </span>
 
-        <button
-          type="button"
-          id="product-search-button"
-          value="product"
-          class="active"
-          aria-pressed="true"
-        >
-          <span class="search-type-icon">
-            <i data-lucide="shopping-bag"></i>
-          </span>
+              <span class="search-type-selected">
+                <i data-lucide="check"></i>
+              </span>
+            </button>
 
-          <span class="search-type-copy">
-            <strong>Products</strong>
+            <!-- SERVICES -->
 
-            <small>
-              Items from local stores
-            </small>
-          </span>
+            <button
+              type="button"
+              id="service-search-button"
+              value="service"
+              aria-pressed="false"
+            >
+              <span class="search-type-icon">
+                <i data-lucide="briefcase-business"></i>
+              </span>
 
-          <span class="search-type-selected">
-            <i data-lucide="check"></i>
-          </span>
-        </button>
+              <span class="search-type-copy">
+                <strong>Services</strong>
 
+                <small> Local professionals and services </small>
+              </span>
 
-        <!-- SERVICES -->
+              <span class="search-type-selected">
+                <i data-lucide="check"></i>
+              </span>
+            </button>
+          </div>
+        </div>
 
-        <button
-          type="button"
-          id="service-search-button"
-          value="service"
-          aria-pressed="false"
-        >
-          <span class="search-type-icon">
-            <i data-lucide="briefcase-business"></i>
-          </span>
-
-          <span class="search-type-copy">
-            <strong>Services</strong>
-
-            <small>
-              Local professionals and services
-            </small>
-          </span>
-
-          <span class="search-type-selected">
-            <i data-lucide="check"></i>
-          </span>
-        </button>
-
-      </div>
-
-    </div>
-
-
-    <!-- =================================================
+        <!-- =================================================
          RECENT SEARCHES
 
          search.js inserts the recent-search section here
          dynamically.
     ================================================== -->
 
-
-    <!-- =================================================
+        <!-- =================================================
          RESULTS
     ================================================== -->
 
-    <div
-      id="search-results"
-      class="search-results"
-      aria-live="polite"
-    ></div>
-
-  </div>
-</section>
+        <div
+          id="search-results"
+          class="search-results"
+          aria-live="polite"
+        ></div>
+      </div>
+    </section>
 
     <!-- =====================================================
          SCRIPTS
