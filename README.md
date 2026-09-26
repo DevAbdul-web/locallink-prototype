@@ -6,6 +6,14 @@ The project explores a location-focused marketplace experience where users can b
 
 > **Project Status:** Frontend prototype. The current version uses static JavaScript data and browser storage to simulate application behaviour. A production backend, authentication system, payment infrastructure, real-time location services, and provider/seller applications are not yet implemented.
 
+## Live Demo
+
+The current frontend prototype is deployed with GitHub Pages.
+
+**[View the Live LocalLink Prototype](https://devabdul-web.github.io/locallink-prototype/)**
+
+The deployment demonstrates the current customer-side marketplace experience, including product discovery, business profiles, cart and checkout flows, order tracking, service discovery, service requests, and simulated service tracking.
+
 ## Overview
 
 Local commerce is often fragmented. Customers may know that a product or service exists somewhere nearby but still have difficulty answering questions such as:
